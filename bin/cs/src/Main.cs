@@ -24,7 +24,34 @@ public class Main : global::haxe.lang.HxObject {
 	
 	
 	public static void main() {
-		global::System.Console.WriteLine(((object) ("haxe is great!") ));
+		global::Main.solveDay(global::Sys.args()[0]);
+	}
+	
+	
+	public static void solveDay(string day) {
+		switch (day) {
+			case "1":
+			{
+				global::solutions.Day1.solve();
+				break;
+			}
+			
+			
+			case "2":
+			{
+				global::System.Console.WriteLine(((object) ("Solving day 2") ));
+				break;
+			}
+			
+			
+			default:
+			{
+				global::System.Console.WriteLine(((object) ("No day provided") ));
+				break;
+			}
+			
+		}
+		
 	}
 	
 	

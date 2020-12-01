@@ -90,6 +90,8 @@ M cs.system.threading.ApartmentState
 M System.Text.EncodingInfo
 M cs.system.reflection.AssemblyNameFlags
 M System.ComponentModel.ComponentCollection
+M solutions.Day1
+C solutions.Day1
 M System.ResolveEventArgs
 M System.Security.Policy.IMembershipCondition
 M System.Runtime.InteropServices._ModuleBuilder
@@ -185,11 +187,15 @@ M cs.system.configuration.assemblies.AssemblyHashAlgorithm
 M System.Reflection.Emit.ModuleBuilder
 M System.Reflection.Emit.OpCode
 M cs.system.security.permissions.SecurityAction
+M Sys
+C Sys
 M System.Threading.EventWaitHandle
 M haxe.Exception
 C haxe.Exception
 M System.BitConverter
 M System.Security.Policy.PolicyStatement
+M haxe.io.Eof
+C haxe.io.Eof
 M System.UnhandledExceptionEventArgs
 M cs.system.reflection.PortableExecutableKinds
 M System.Reflection.Emit.StringToken
@@ -229,6 +235,13 @@ M System.UInt32
 M cs.system.threading.ThreadPriority
 M System.Reflection.Emit.PropertyToken
 M System.Text.RegularExpressions.RegexRunner
+M haxe.io.Error
+E haxe.io.Error
+C haxe.io.Error
+C haxe.io.Error_Blocked
+C haxe.io.Error_Overflow
+C haxe.io.Error_OutsideBounds
+C haxe.io.Error_Custom
 M Any
 M cs.system.io.FileAttributes
 M System.IDisposable
@@ -280,6 +293,8 @@ M System.Reflection.Emit.MethodToken
 M cs.system.security.accesscontrol.AuditFlags
 M System.Double
 M System.IO.DirectoryInfo
+M haxe.io.Bytes
+C haxe.io.Bytes
 M System.Security.AccessControl.EventWaitHandleSecurity
 M System.Security.AccessControl.FileSystemAccessRule
 M cs.system.threading.ParameterizedThreadStart
@@ -421,6 +436,8 @@ C haxe.lang.Runtime
 M cs.Lib
 C cs.Lib
 M cs.system.Array
+M sys.io.FileInput
+C sys.io.FileInput
 M System.Runtime.InteropServices._ILGenerator
 M System.Diagnostics.StackFrame
 M System.Security.ISecurityEncodable
@@ -469,6 +486,8 @@ M System.Object
 M cs.system.diagnostics.ThreadState
 M System.Runtime.Serialization.SerializationInfoEnumerator
 M System.RuntimeTypeHandle
+M sys.io.File
+C sys.io.File
 M cs.system.diagnostics.ProcessWindowStyle
 M haxe.ds.Map
 M cs.system.reflection.MemberFilter
@@ -504,7 +523,11 @@ M cs.system.globalization.NumberStyles
 M System.Runtime.InteropServices._FieldBuilder
 M cs.system.configuration.assemblies.AssemblyVersionCompatibility
 M cs.system.AppDomainInitializer
+M haxe.io.BytesBuffer
+C haxe.io.BytesBuffer
 M System.Decimal
+M cs.io.NativeInput
+C cs.io.NativeInput
 M cs.system.Console
 M cs.system.security.SecurityElement
 M Enum
@@ -550,6 +573,8 @@ M cs.system.ActivationContext
 M cs.system.reflection.ExceptionHandlingClauseOptions
 M System.Security.Policy.IConstantMembershipCondition
 M System.AppDomainSetup
+M haxe.io.Input
+C haxe.io.Input
 M System.Int64
 M System.OperatingSystem
 M System.Runtime.Remoting.IChannelInfo

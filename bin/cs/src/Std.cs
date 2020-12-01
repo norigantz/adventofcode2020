@@ -98,6 +98,147 @@ public class Std {
 	}
 	
 	
+	public static global::haxe.lang.Null<int> parseInt(string x) {
+		unchecked {
+			if (( x == null )) {
+				return default(global::haxe.lang.Null<int>);
+			}
+			
+			int @base = 10;
+			int len = x.Length;
+			int foundCount = 0;
+			int sign = 0;
+			int firstDigitIndex = 0;
+			int lastDigitIndex = -1;
+			int previous = 0;
+			{
+				int _g = 0;
+				int _g1 = len;
+				while (( _g < _g1 )) {
+					int i = _g++;
+					int c = ( (( ((uint) (i) ) < x.Length )) ? (((int) (x[i]) )) : (-1) );
+					if (( ( ( c > 8 ) && ( c < 14 ) ) || ( c == 32 ) )) {
+						if (( foundCount > 0 )) {
+							return default(global::haxe.lang.Null<int>);
+						}
+						
+						continue;
+					}
+					else {
+						switch (c) {
+							case 43:
+							{
+								if (( foundCount == 0 )) {
+									sign = 1;
+								}
+								else if (( ( 48 <= c ) && ( c <= 57 ) )) {
+								}
+								else if (( ( @base == 16 ) && (( ( ( 97 <= c ) && ( c <= 122 ) ) || ( ( 65 <= c ) && ( c <= 90 ) ) )) )) {
+								}
+								else {
+									goto label1;
+								}
+								
+								break;
+							}
+							
+							
+							case 45:
+							{
+								if (( foundCount == 0 )) {
+									sign = -1;
+								}
+								else if (( ( 48 <= c ) && ( c <= 57 ) )) {
+								}
+								else if (( ( @base == 16 ) && (( ( ( 97 <= c ) && ( c <= 122 ) ) || ( ( 65 <= c ) && ( c <= 90 ) ) )) )) {
+								}
+								else {
+									goto label1;
+								}
+								
+								break;
+							}
+							
+							
+							case 48:
+							{
+								if (( ( foundCount == 0 ) || ( ( foundCount == 1 ) && ( sign != 0 ) ) )) {
+								}
+								else if (( ( 48 <= c ) && ( c <= 57 ) )) {
+								}
+								else if (( ( @base == 16 ) && (( ( ( 97 <= c ) && ( c <= 122 ) ) || ( ( 65 <= c ) && ( c <= 90 ) ) )) )) {
+								}
+								else {
+									goto label1;
+								}
+								
+								break;
+							}
+							
+							
+							case 88:
+							case 120:
+							{
+								if (( ( previous == 48 ) && (( ( ( foundCount == 1 ) && ( sign == 0 ) ) || ( ( foundCount == 2 ) && ( sign != 0 ) ) )) )) {
+									@base = 16;
+								}
+								else if (( ( 48 <= c ) && ( c <= 57 ) )) {
+								}
+								else if (( ( @base == 16 ) && (( ( ( 97 <= c ) && ( c <= 122 ) ) || ( ( 65 <= c ) && ( c <= 90 ) ) )) )) {
+								}
+								else {
+									goto label1;
+								}
+								
+								break;
+							}
+							
+							
+							default:
+							{
+								if (( ( 48 <= c ) && ( c <= 57 ) )) {
+								}
+								else if (( ( @base == 16 ) && (( ( ( 97 <= c ) && ( c <= 122 ) ) || ( ( 65 <= c ) && ( c <= 90 ) ) )) )) {
+								}
+								else {
+									goto label1;
+								}
+								
+								break;
+							}
+							
+						}
+						
+					}
+					
+					if (( ( ( foundCount == 0 ) && ( sign == 0 ) ) || ( ( foundCount == 1 ) && ( sign != 0 ) ) )) {
+						firstDigitIndex = i;
+					}
+					
+					 ++ foundCount;
+					lastDigitIndex = i;
+					previous = c;
+				}
+				label1: {};
+			}
+			
+			if (( firstDigitIndex <= lastDigitIndex )) {
+				string digits = global::haxe.lang.StringExt.substring(x, firstDigitIndex, new global::haxe.lang.Null<int>(( lastDigitIndex + 1 ), true));
+				try {
+					return new global::haxe.lang.Null<int>(( (( (( sign == -1 )) ? (-1) : (1) )) * global::System.Convert.ToInt32(((string) (digits) ), ((int) (@base) )) ), true);
+				}
+				catch (global::System.FormatException e){
+					return default(global::haxe.lang.Null<int>);
+				}
+				
+				
+			}
+			
+			return default(global::haxe.lang.Null<int>);
+		}
+	}
+	
+	
 }
 
 

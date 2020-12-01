@@ -59,17 +59,27 @@
 	
     <Compile Include="src\haxe\lang\Null.cs"/>
 	
+    <Compile Include="src\solutions\Day1.cs"/>
+	
     <Compile Include="src\Array.cs"/>
 	
     <Compile Include="src\cs\internal\Function.cs"/>
 	
+    <Compile Include="src\Sys.cs"/>
+	
     <Compile Include="src\haxe\Exception.cs"/>
 	
+    <Compile Include="src\haxe\io\Eof.cs"/>
+	
     <Compile Include="src\Type.cs"/>
+	
+    <Compile Include="src\haxe\io\Error.cs"/>
 	
     <Compile Include="src\haxe\iterators\ArrayIterator.cs"/>
 	
     <Compile Include="src\Reflect.cs"/>
+	
+    <Compile Include="src\haxe\io\Bytes.cs"/>
 	
     <Compile Include="src\haxe\iterators\ArrayKeyValueIterator.cs"/>
 	
@@ -81,11 +91,21 @@
 	
     <Compile Include="src\cs\Lib.cs"/>
 	
+    <Compile Include="src\sys\io\FileInput.cs"/>
+	
     <Compile Include="src\cs\internal\HxObject.cs"/>
 	
     <Compile Include="src\cs\internal\FieldLookup.cs"/>
 	
+    <Compile Include="src\sys\io\File.cs"/>
+	
     <Compile Include="src\Main.cs"/>
+	
+    <Compile Include="src\haxe\io\BytesBuffer.cs"/>
+	
+    <Compile Include="src\cs\io\NativeInput.cs"/>
+	
+    <Compile Include="src\haxe\io\Input.cs"/>
 	
   </ItemGroup>
   
