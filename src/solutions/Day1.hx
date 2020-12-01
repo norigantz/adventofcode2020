@@ -11,32 +11,27 @@ class Day1 {
     }
 
     static function solve_a(arr:Array<Int>) {
-        var result:Array<Int> = sum_exists(arr, 2020);
-        Sys.println("a: " + result[0] * result[1]);
+        Sys.println("a: " + multSum(arr, 2020));
     }
 
     static function solve_b(arr:Array<Int>) {
         var curr:Int = 0;
-        var result:Array<Int> = null;
+        var res:Int = -1;
+
         for (a in arr) {
             curr = a;
-            result = sum_exists(arr, 2020-curr);
-            if (result != null) break;
+            res = multSum(arr, 2020-curr);
+            if(res > -1) break;
         }
-        Sys.println("b: " + curr * result[0] * result[1]);
+        Sys.println("b: " + curr * res);
     }
 
-    //Returns two ints, both from Array<Int> arr, that sum to Int sumTarget
-    static function sum_exists(arr:Array<Int>, sumTarget:Int):Array<Int> {
-        var arrCopy = arr.copy();
-        var curr:Null<Int> = 0;
-        var diff:Int;
-        var str:String;
-        while(curr != null) {
-            curr = arrCopy.shift();
-            diff = sumTarget - curr;
-            if(arrCopy.contains(diff)) return [curr, diff];
+    static function multSum(arr:Array<Int>, sumTarget:Int):Int {
+        for (i in 0...arr.length) {
+            for (j in i...arr.length) {
+                if (arr[j] == sumTarget - arr[i]) return arr[i] * arr[j];
+            }
         }
-        return null;
+        return -1;
     }
 }

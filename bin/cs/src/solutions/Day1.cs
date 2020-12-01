@@ -51,8 +51,7 @@ namespace solutions {
 		
 		public static void solve_a(global::Array<int> arr) {
 			unchecked {
-				global::Array<int> result = global::solutions.Day1.sum_exists(arr, 2020);
-				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", global::haxe.lang.Runtime.toString(( result[0] * result[1] )))) ));
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", global::haxe.lang.Runtime.toString(global::solutions.Day1.multSum(arr, 2020)))) ));
 			}
 		}
 		
@@ -60,15 +59,15 @@ namespace solutions {
 		public static void solve_b(global::Array<int> arr) {
 			unchecked {
 				int curr = 0;
-				global::Array<int> result = null;
+				int res = -1;
 				{
 					int _g = 0;
 					while (( _g < arr.length )) {
 						int a = arr[_g];
 						 ++ _g;
 						curr = a;
-						result = global::solutions.Day1.sum_exists(arr, ( 2020 - curr ));
-						if (( result != null )) {
+						res = global::solutions.Day1.multSum(arr, ( 2020 - curr ));
+						if (( res > -1 )) {
 							break;
 						}
 						
@@ -76,26 +75,37 @@ namespace solutions {
 					
 				}
 				
-				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("b: ", global::haxe.lang.Runtime.toString(( ( curr * result[0] ) * result[1] )))) ));
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("b: ", global::haxe.lang.Runtime.toString(( curr * res )))) ));
 			}
 		}
 		
 		
-		public static global::Array<int> sum_exists(global::Array<int> arr, int sumTarget) {
-			global::Array<int> arrCopy = arr.copy();
-			global::haxe.lang.Null<int> curr = new global::haxe.lang.Null<int>(0, true);
-			int diff = default(int);
-			string str = null;
-			while (curr.hasValue) {
-				curr = arrCopy.shift();
-				diff = ( sumTarget - (curr).@value );
-				if (arrCopy.contains(diff)) {
-					return new global::Array<int>(new int[]{(curr).@value, diff});
+		public static int multSum(global::Array<int> arr, int sumTarget) {
+			unchecked {
+				{
+					int _g = 0;
+					int _g1 = arr.length;
+					while (( _g < _g1 )) {
+						int i = _g++;
+						{
+							int _g2 = i;
+							int _g3 = arr.length;
+							while (( _g2 < _g3 )) {
+								int j = _g2++;
+								if (( arr[j] == ( sumTarget - arr[i] ) )) {
+									return ( arr[i] * arr[j] );
+								}
+								
+							}
+							
+						}
+						
+					}
+					
 				}
 				
+				return -1;
 			}
-			
-			return null;
 		}
 		
 		
