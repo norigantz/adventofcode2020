@@ -11,12 +11,7 @@
 				"$haxe-trace"
 			],
 			"group": "build",
-			"label": "haxe: build.hxml"
-		},
-		{
-			"args": ["build.hxml", "--interp"],
-			"group": "build",
-			"label": "haxe: Interpreter"
+			"label": "haxe: build.hxml",
 		}
 	]
 }

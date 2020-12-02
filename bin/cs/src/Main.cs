@@ -28,8 +28,8 @@ public class Main : global::haxe.lang.HxObject {
 	}
 	
 	
-	public static void solveDay(string day) {
-		switch (day) {
+	public static void solveDay(string arg) {
+		switch (arg) {
 			case "1":
 			{
 				global::solutions.Day1.solve();
@@ -39,14 +39,14 @@ public class Main : global::haxe.lang.HxObject {
 			
 			case "2":
 			{
-				global::System.Console.WriteLine(((object) ("Solving day 2") ));
+				global::solutions.Day2.solve();
 				break;
 			}
 			
 			
 			default:
 			{
-				global::System.Console.WriteLine(((object) ("No day provided") ));
+				global::System.Console.WriteLine(((object) ("No day found") ));
 				break;
 			}
 			

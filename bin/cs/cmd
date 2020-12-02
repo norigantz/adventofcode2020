@@ -15,6 +15,7 @@ src\cs\internal\Function.cs
 src\Sys.cs
 src\haxe\Exception.cs
 src\haxe\io\Eof.cs
+src\solutions\Day2.cs
 src\Type.cs
 src\haxe\io\Error.cs
 src\haxe\iterators\ArrayIterator.cs

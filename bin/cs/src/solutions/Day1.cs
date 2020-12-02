@@ -19,13 +19,14 @@ namespace solutions {
 		
 		
 		protected static void __hx_ctor_solutions_Day1(global::solutions.Day1 __hx_this) {
+			global::System.Console.WriteLine(((object) ("new day1") ));
 		}
 		
 		
 		public static string input;
 		
 		public static void solve() {
-			global::System.Console.WriteLine(((object) ("Solving day 1") ));
+			global::System.Console.WriteLine(((object) ("Solving Day1") ));
 			global::Array<string> _this = global::haxe.lang.StringExt.split(global::solutions.Day1.input, "\r\n");
 			global::haxe.lang.Function f = ((global::haxe.lang.Function) (new global::haxe.lang.Closure(typeof(global::Std), "parseInt", 1450317436)) );
 			global::Array<object> ret = new global::Array<object>(((object[]) (new object[_this.length]) ));

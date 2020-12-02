@@ -5,11 +5,11 @@ class Main {
         solveDay(Sys.args()[0]);
     }
 
-    static function solveDay(day:String) {
-        switch day {
+    static function solveDay(arg:String) {
+        switch arg {
             case "1": Day1.solve();
-            case "2": Sys.println("Solving day 2");
-            default: Sys.println("No day provided");
+            case "2": Day2.solve();
+            default: Sys.println("No day found");
         }
     }
 }

@@ -3,8 +3,12 @@ package solutions;
 class Day1 {
     static var input:String = sys.io.File.getContent('inputs/Day1.txt');
 
+    public function new() {
+        Sys.println("new day1");
+    }
+
     public static function solve() {
-        Sys.println("Solving day 1");
+        Sys.println("Solving Day1");
         var arr:Array<Int> = input.split('\r\n').map(Std.parseInt);
         solve_a(arr);
         solve_b(arr);

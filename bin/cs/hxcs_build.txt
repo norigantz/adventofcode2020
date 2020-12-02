@@ -209,6 +209,8 @@ M System.NullReferenceException
 M System.Diagnostics.StackTrace
 M cs.system.reflection.ModuleResolveEventHandler
 M System.Collections.Specialized.StringDictionary
+M solutions.Day2
+C solutions.Day2
 M sys.FileStat
 M Type
 C Type
