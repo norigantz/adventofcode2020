@@ -37,17 +37,18 @@ namespace solutions {
 						 ++ _g;
 						global::Array<string> lineArr = global::haxe.lang.StringExt.split(line, ":");
 						string policy = lineArr[0];
-						string password = lineArr[1].Trim();
+						string password = lineArr[1];
 						global::Array<string> minMaxArr = global::haxe.lang.StringExt.split(policy, "-");
 						global::haxe.lang.Null<int> min = global::Std.parseInt(minMaxArr[0]);
-						global::haxe.lang.Null<int> max = global::Std.parseInt(global::haxe.lang.StringExt.split(minMaxArr[1], " ")[0]);
-						string @char = global::haxe.lang.StringExt.split(minMaxArr[1], " ")[1];
+						global::Array<string> maxCharArr = global::haxe.lang.StringExt.split(minMaxArr[1], " ");
+						global::haxe.lang.Null<int> max = global::Std.parseInt(maxCharArr[0]);
+						string @char = maxCharArr[1];
 						int count = ( global::haxe.lang.StringExt.split(password, @char).length - 1 );
 						if (( ( count >= (min).@value ) && ( count <= (max).@value ) )) {
 							 ++ resultA;
 						}
 						
-						if (( ( ( global::haxe.lang.StringExt.charAt(password, ( (min).@value - 1 )) == @char ) && ( global::haxe.lang.StringExt.charAt(password, ( (max).@value - 1 )) != @char ) ) || ( ( global::haxe.lang.StringExt.charAt(password, ( (min).@value - 1 )) != @char ) && ( global::haxe.lang.StringExt.charAt(password, ( (max).@value - 1 )) == @char ) ) )) {
+						if (( ( ( global::haxe.lang.StringExt.charAt(password, (min).@value) == @char ) && ( global::haxe.lang.StringExt.charAt(password, (max).@value) != @char ) ) || ( ( global::haxe.lang.StringExt.charAt(password, (min).@value) != @char ) && ( global::haxe.lang.StringExt.charAt(password, (max).@value) == @char ) ) )) {
 							 ++ resultB;
 						}
 						

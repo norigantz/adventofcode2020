@@ -1,5 +1,4 @@
 package solutions;
-using StringTools;
 
 class Day2 {
     static var input:String = sys.io.File.getContent('E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day2.txt');
@@ -13,14 +12,15 @@ class Day2 {
         for (line in arr) {
             var lineArr:Array<String> = line.split(':');
             var policy = lineArr[0];
-            var password = lineArr[1].trim();
+            var password = lineArr[1]; //could use StringTools.trim() here: put "using StringTools" above and then add ".trim()" to this String
             // Sys.println(policy + ', ' + password);
 
             //Policy processing
             var minMaxArr = policy.split('-');
             var min = Std.parseInt(minMaxArr[0]);
-            var max = Std.parseInt(minMaxArr[1].split(' ')[0]);
-            var char = minMaxArr[1].split(' ')[1];
+            var maxCharArr = minMaxArr[1].split(' ');
+            var max = Std.parseInt(maxCharArr[0]);
+            var char = maxCharArr[1];
             // Sys.println('min: ' + min + ', max: ' + max + ', char: ' + char);
 
             //Password processing
@@ -30,9 +30,9 @@ class Day2 {
             //solving a
             if (count >= min && count <= max) resultA++;
 
-            //solving b
-            if (password.charAt(min-1) == char && password.charAt(max-1) != char ||
-                password.charAt(min-1) != char && password.charAt(max-1) == char) resultB++;
+            //solving b; does not do -1 on the charAt's because there is a leading space in the password
+            if (password.charAt(min) == char && password.charAt(max) != char ||
+                password.charAt(min) != char && password.charAt(max) == char) resultB++;
 
             // Sys.println('');
         }
