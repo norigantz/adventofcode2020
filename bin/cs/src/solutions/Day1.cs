@@ -19,7 +19,6 @@ namespace solutions {
 		
 		
 		protected static void __hx_ctor_solutions_Day1(global::solutions.Day1 __hx_this) {
-			global::System.Console.WriteLine(((object) ("new day1") ));
 		}
 		
 		
