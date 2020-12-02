@@ -7,7 +7,8 @@ class Day2 {
     public static function solve() {
         Sys.println("Solving Day2");
         var arr:Array<String> = input.split('\r\n');
-        var result = 0;
+        var resultA = 0;
+        var resultB = 0;
         for (line in arr) {
             var lineArr:Array<String> = line.split(':');
             var policy = lineArr[0];
@@ -24,10 +25,13 @@ class Day2 {
             //Password processing
             var count = password.split(char).length - 1;
             Sys.println('count: ' + count);
-            if (count >= min && count <= max) result++;
+            if (count >= min && count <= max) resultA++;
+            if (''+password[min-1] == char && ''+password[max-1] != char ||
+                ''+password[min-1] != char && ''+password[max-1] == char) resultB++;
 
             Sys.println('');
         }
-        Sys.println(result);
+        Sys.println('a: ' + resultA);
+        Sys.println('b: ' + resultB);
     }
 }

@@ -28,7 +28,8 @@ namespace solutions {
 			unchecked {
 				global::System.Console.WriteLine(((object) ("Solving Day2") ));
 				global::Array<string> arr = global::haxe.lang.StringExt.split(global::solutions.Day2.input, "\r\n");
-				int result = 0;
+				int resultA = 0;
+				int resultB = 0;
 				{
 					int _g = 0;
 					while (( _g < arr.length )) {
@@ -46,7 +47,11 @@ namespace solutions {
 						int count = ( global::haxe.lang.StringExt.split(password, @char).length - 1 );
 						global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("count: ", global::haxe.lang.Runtime.toString(count))) ));
 						if (( ( count >= (min).@value ) && ( count <= (max).@value ) )) {
-							 ++ result;
+							 ++ resultA;
+						}
+						
+						if (( ( ( global::haxe.lang.Runtime.concat("", global::Std.@string(password[( (min).@value - 1 )])) == @char ) && ( global::haxe.lang.Runtime.concat("", global::Std.@string(password[( (max).@value - 1 )])) != @char ) ) || ( ( global::haxe.lang.Runtime.concat("", global::Std.@string(password[( (min).@value - 1 )])) != @char ) && ( global::haxe.lang.Runtime.concat("", global::Std.@string(password[( (max).@value - 1 )])) == @char ) ) )) {
+							 ++ resultB;
 						}
 						
 						global::System.Console.WriteLine(((object) ("") ));
@@ -54,7 +59,8 @@ namespace solutions {
 					
 				}
 				
-				global::System.Console.WriteLine(((object) (result) ));
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", global::haxe.lang.Runtime.toString(resultA))) ));
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("b: ", global::haxe.lang.Runtime.toString(resultB))) ));
 			}
 		}
 		
