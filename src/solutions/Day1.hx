@@ -1,7 +1,10 @@
 package solutions;
 
+import sys.FileSystem;
+import sys.FileStat;
+
 class Day1 {
-    static var input:String = sys.io.File.getContent('inputs/Day1.txt');
+    static var input:String = sys.io.File.getContent('E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day1.txt');
 
     public static function solve() {
         Sys.println("Solving Day1");

@@ -29,7 +29,16 @@ public class Main : global::haxe.lang.HxObject {
 	
 	
 	public static void solveDay(string arg) {
-		switch (arg) {
+		while ( ! (global::Main.runDaySolver(arg)) ) {
+			global::System.Console.WriteLine(((object) ("No day found. Input a solved day: ") ));
+			arg = ((global::haxe.io.Input) (new global::cs.io.NativeInput(((global::System.IO.Stream) (global::System.Console.OpenStandardInput()) ))) ).readLine();
+		}
+		
+	}
+	
+	
+	public static bool runDaySolver(string day) {
+		switch (day) {
 			case "1":
 			{
 				global::solutions.Day1.solve();
@@ -44,14 +53,21 @@ public class Main : global::haxe.lang.HxObject {
 			}
 			
 			
+			case "3":
+			{
+				global::solutions.Day3.solve();
+				break;
+			}
+			
+			
 			default:
 			{
-				global::System.Console.WriteLine(((object) ("No day found") ));
-				break;
+				return false;
 			}
 			
 		}
 		
+		return true;
 	}
 	
 	

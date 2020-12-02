@@ -5,7 +5,7 @@ namespace solutions {
 	public class Day1 : global::haxe.lang.HxObject {
 		
 		static Day1() {
-			global::solutions.Day1.input = global::sys.io.File.getContent("inputs/Day1.txt");
+			global::solutions.Day1.input = global::sys.io.File.getContent("E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day1.txt");
 		}
 		
 		

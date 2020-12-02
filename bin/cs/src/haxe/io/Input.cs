@@ -92,9 +92,61 @@ namespace haxe.io {
 		}
 		
 		
+		public virtual string readLine() {
+			unchecked {
+				global::haxe.io.BytesBuffer buf = new global::haxe.io.BytesBuffer();
+				int last = default(int);
+				string s = null;
+				try {
+					while (true) {
+						last = this.readByte();
+						if ( ! ((( last != 10 ))) ) {
+							break;
+						}
+						
+						( buf.b as global::System.IO.Stream ).WriteByte(((byte) (last) ));
+					}
+					
+					s = buf.getBytes().toString();
+					if (global::haxe.lang.Runtime.eq((global::haxe.lang.StringExt.charCodeAt(s, ( s.Length - 1 ))).toDynamic(), 13)) {
+						s = global::haxe.lang.StringExt.substr(s, 0, new global::haxe.lang.Null<int>(-1, true));
+					}
+					
+				}
+				catch (global::System.Exception _g){
+					object _g1 = global::haxe.Exception.caught(_g).unwrap();
+					if (( _g1 is global::haxe.io.Eof )) {
+						global::haxe.io.Eof e = ((global::haxe.io.Eof) (_g1) );
+						{
+							s = buf.getBytes().toString();
+							if (( s.Length == 0 )) {
+								throw ((global::System.Exception) (global::haxe.Exception.thrown(e)) );
+							}
+							
+						}
+						
+					}
+					else {
+						throw _g;
+					}
+					
+				}
+				
+				
+				return s;
+			}
+		}
+		
+		
 		public override object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties) {
 			unchecked {
 				switch (hash) {
+					case 1873474154:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "readLine", 1873474154)) );
+					}
+					
+					
 					case 46374763:
 					{
 						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "readAll", 46374763)) );
@@ -127,6 +179,12 @@ namespace haxe.io {
 		public override object __hx_invokeField(string field, int hash, object[] dynargs) {
 			unchecked {
 				switch (hash) {
+					case 1873474154:
+					{
+						return this.readLine();
+					}
+					
+					
 					case 46374763:
 					{
 						return this.readAll(global::haxe.lang.Null<object>.ofDynamic<int>(( (( dynargs.Length > 0 )) ? (dynargs[0]) : (null) )));

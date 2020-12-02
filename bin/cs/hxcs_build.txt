@@ -152,6 +152,8 @@ M cs.system.collections.Hashtable
 M cs.system.runtime.interopservices.CallingConvention
 M cs.system.text.Encoding
 M cs.system.MidpointRounding
+M solutions.Day3
+C solutions.Day3
 M cs.system.reflection.BindingFlags
 M cs.system.reflection.ParameterAttributes
 M System.IO.Directory

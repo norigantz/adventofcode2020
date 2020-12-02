@@ -6,10 +6,19 @@ class Main {
     }
 
     static function solveDay(arg:String) {
-        switch arg {
+        while (!runDaySolver(arg)) {
+            Sys.println("No day found. Input a solved day: ");
+            arg = Sys.stdin().readLine();
+        }
+    }
+
+    static function runDaySolver(day:String):Bool {
+        switch day {
             case "1": Day1.solve();
             case "2": Day2.solve();
-            default: Sys.println("No day found");
+            case "3": Day3.solve();
+            default: return false;
         }
+        return true;
     }
 }

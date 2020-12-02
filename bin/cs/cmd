@@ -12,6 +12,7 @@ src\haxe\lang\Null.cs
 src\solutions\Day1.cs
 src\Array.cs
 src\cs\internal\Function.cs
+src\solutions\Day3.cs
 src\Sys.cs
 src\haxe\Exception.cs
 src\haxe\io\Eof.cs
