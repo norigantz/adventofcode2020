@@ -25,6 +25,32 @@ namespace solutions {
 		public static string input;
 		
 		public static void solve() {
+			unchecked {
+				global::System.Console.WriteLine(((object) ("Solving Day3") ));
+				global::Array<string> arr = global::haxe.lang.StringExt.split(global::solutions.Day3.input, "\r\n");
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (global::solutions.Day3.calcSlope(arr, 3, 1)) )))))) ));
+				long resultB = ( ((long) (( ((long) (( ((long) (( ((long) (global::solutions.Day3.calcSlope(arr, 1, 1)) ) * ((long) (global::solutions.Day3.calcSlope(arr, 3, 1)) ) )) ) * ((long) (global::solutions.Day3.calcSlope(arr, 5, 1)) ) )) ) * ((long) (global::solutions.Day3.calcSlope(arr, 7, 1)) ) )) ) * ((long) (global::solutions.Day3.calcSlope(arr, 1, 2)) ) );
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("b: ", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (resultB) )))))) ));
+			}
+		}
+		
+		
+		public static long calcSlope(global::Array<string> arr, int dx, int dy) {
+			unchecked {
+				long result = ((long) (0) );
+				int x = dx;
+				int y = dy;
+				while (( y < arr.length )) {
+					if (( global::haxe.lang.StringExt.charAt(arr[y], x) == "#" )) {
+						result += ((long) (1) );
+					}
+					
+					x = ( (( x + dx )) % arr[0].Length );
+					y += dy;
+				}
+				
+				return result;
+			}
 		}
 		
 		
