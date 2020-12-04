@@ -57,24 +57,13 @@ namespace solutions {
 		
 		public static global::haxe.ds.StringMap<string> processPassport(string passport) {
 			unchecked {
-				global::Array<string> fields = new global::Array<string>(new string[]{});
-				global::Array<string> fieldsPrelims = global::haxe.lang.StringExt.split(passport, " ");
-				{
-					int _g = 0;
-					while (( _g < fieldsPrelims.length )) {
-						string prelim = fieldsPrelims[_g];
-						 ++ _g;
-						fields = fields.concat(global::haxe.lang.StringExt.split(prelim, "\r\n"));
-					}
-					
-				}
-				
+				global::Array<string> fields = new global::EReg("[ ]|\r\n", "g").split(passport);
 				global::haxe.ds.StringMap<string> keyValues = new global::haxe.ds.StringMap<string>();
 				{
-					int _g1 = 0;
-					while (( _g1 < fields.length )) {
-						string field = fields[_g1];
-						 ++ _g1;
+					int _g = 0;
+					while (( _g < fields.length )) {
+						string field = fields[_g];
+						 ++ _g;
 						{
 							string k = global::haxe.lang.StringExt.substr(field, 0, new global::haxe.lang.Null<int>(3, true));
 							string v = global::haxe.lang.StringExt.substr(field, 4, new global::haxe.lang.Null<int>(( field.Length - 4 ), true));

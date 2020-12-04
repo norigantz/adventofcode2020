@@ -75,6 +75,20 @@ public sealed class EReg : global::haxe.lang.HxObject {
 	}
 	
 	
+	public global::Array<string> split(string s) {
+		if (this.isGlobal) {
+			return new global::Array<string>(((string[]) (this.regex.Split(((string) (s) ))) ));
+		}
+		
+		global::System.Text.RegularExpressions.Match m = this.regex.Match(((string) (s) ));
+		if ( ! (( m as global::System.Text.RegularExpressions.Group ).Success) ) {
+			return new global::Array<string>(new string[]{s});
+		}
+		
+		return new global::Array<string>(new string[]{s.Substring(((int) (0) ), ((int) (( m as global::System.Text.RegularExpressions.Capture ).Index) )), s.Substring(((int) (( ( m as global::System.Text.RegularExpressions.Capture ).Index + ( m as global::System.Text.RegularExpressions.Capture ).Length )) ))});
+	}
+	
+	
 	public override object __hx_setField(string field, int hash, object @value, bool handleProperties) {
 		unchecked {
 			switch (hash) {
@@ -120,6 +134,12 @@ public sealed class EReg : global::haxe.lang.HxObject {
 	public override object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties) {
 		unchecked {
 			switch (hash) {
+				case 24046298:
+				{
+					return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "split", 24046298)) );
+				}
+				
+				
 				case 52644165:
 				{
 					return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "match", 52644165)) );
@@ -164,6 +184,12 @@ public sealed class EReg : global::haxe.lang.HxObject {
 	public override object __hx_invokeField(string field, int hash, object[] dynargs) {
 		unchecked {
 			switch (hash) {
+				case 24046298:
+				{
+					return this.split(global::haxe.lang.Runtime.toString(dynargs[0]));
+				}
+				
+				
 				case 52644165:
 				{
 					return this.match(global::haxe.lang.Runtime.toString(dynargs[0]));

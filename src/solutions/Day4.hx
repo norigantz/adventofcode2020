@@ -25,11 +25,7 @@ class Day4 {
     }
 
     static function processPassport(passport:String):Map<String, String> {
-        var fields:Array<String> = [];
-        var fieldsPrelims:Array<String> = passport.split(' ');
-        for (prelim in fieldsPrelims) {
-            fields = fields.concat(prelim.split('\r\n'));
-        }
+        var fields:Array<String> = ~/[ ]|\r\n/g.split(passport);
         var keyValues:Map<String, String> = new Map<String, String>();
         for (field in fields) {
             keyValues[field.substr(0, 3)] = field.substr(4, field.length-4);
