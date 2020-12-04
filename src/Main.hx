@@ -17,6 +17,7 @@ class Main {
             case "1": Day1.solve();
             case "2": Day2.solve();
             case "3": Day3.solve();
+            case "4": Day4.solve();
             default: return false;
         }
         return true;

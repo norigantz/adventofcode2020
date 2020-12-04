@@ -329,6 +329,8 @@ M System.Runtime.InteropServices._MethodBase
 M System.Runtime.Remoting.ObjectHandle
 M cs.system.security.cryptography.x509certificates.X509Certificate
 M haxe.Constraints
+C haxe.IMap
+C haxe.IMap
 M System.Runtime.Serialization.IDeserializationCallback
 M cs.system.reflection.MemberTypes
 M System.Diagnostics.FileVersionInfo
@@ -377,6 +379,10 @@ M System.ComponentModel.ISynchronizeInvoke
 M cs.system.security.permissions.PermissionState
 M System.Security.Policy.StrongName
 M haxe.ds.StringMap
+C haxe.ds.StringMap
+C haxe.ds.StringMap
+C haxe.ds._StringMap.StringMapKeyIterator
+C haxe.ds._StringMap.StringMapKeyIterator
 M cs.system.io.FileStream
 M System.MarshalByRefObject
 M System.ModuleHandle
@@ -451,6 +457,8 @@ M System.Security.Policy.StrongNameMembershipCondition
 M System.Collections.Generic.ICollection`1
 M cs.system.security.policy.TrustManagerUIContext
 M System.Reflection.IReflect
+M EReg
+C EReg
 M System.Reflection.Emit.AssemblyBuilder
 M System.Math
 M cs.system.security.policy.PolicyStatementAttribute
@@ -572,6 +580,8 @@ M System.Runtime.Remoting.IEnvoyInfo
 M cs.system.reflection.EventInfo
 M System.Runtime.InteropServices._MemberInfo
 M System.IServiceProvider
+M solutions.Day4
+C solutions.Day4
 M cs.types.UInt64
 M cs.system.ActivationContext
 M cs.system.reflection.ExceptionHandlingClauseOptions

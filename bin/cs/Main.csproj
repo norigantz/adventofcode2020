@@ -85,7 +85,11 @@
 	
     <Compile Include="src\haxe\io\Bytes.cs"/>
 	
+    <Compile Include="src\haxe\Constraints.cs"/>
+	
     <Compile Include="src\haxe\iterators\ArrayKeyValueIterator.cs"/>
+	
+    <Compile Include="src\haxe\ds\StringMap.cs"/>
 	
     <Compile Include="src\haxe\ValueException.cs"/>
 	
@@ -96,6 +100,8 @@
     <Compile Include="src\cs\Lib.cs"/>
 	
     <Compile Include="src\sys\io\FileInput.cs"/>
+	
+    <Compile Include="src\EReg.cs"/>
 	
     <Compile Include="src\cs\internal\HxObject.cs"/>
 	
@@ -108,6 +114,8 @@
     <Compile Include="src\haxe\io\BytesBuffer.cs"/>
 	
     <Compile Include="src\cs\io\NativeInput.cs"/>
+	
+    <Compile Include="src\solutions\Day4.cs"/>
 	
     <Compile Include="src\haxe\io\Input.cs"/>
 	
