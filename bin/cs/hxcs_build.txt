@@ -510,6 +510,8 @@ M System.Runtime.InteropServices._AssemblyBuilder
 M System.Runtime.InteropServices._Assembly
 M System.Runtime.InteropServices._EnumBuilder
 M cs.system.security.accesscontrol.InheritanceFlags
+M solutions.Day5
+C solutions.Day5
 M System.Runtime.InteropServices._MethodInfo
 M System.ConsoleKeyInfo
 M System.Security.SecurityState

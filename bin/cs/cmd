@@ -34,6 +34,7 @@ src\EReg.cs
 src\cs\internal\HxObject.cs
 src\cs\internal\FieldLookup.cs
 src\sys\io\File.cs
+src\solutions\Day5.cs
 src\Main.cs
 src\haxe\io\BytesBuffer.cs
 src\cs\io\NativeInput.cs

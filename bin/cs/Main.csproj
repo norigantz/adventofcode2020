@@ -109,6 +109,8 @@
 	
     <Compile Include="src\sys\io\File.cs"/>
 	
+    <Compile Include="src\solutions\Day5.cs"/>
+	
     <Compile Include="src\Main.cs"/>
 	
     <Compile Include="src\haxe\io\BytesBuffer.cs"/>
