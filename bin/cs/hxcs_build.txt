@@ -260,6 +260,8 @@ M System.Security.AccessControl.DirectorySecurity
 M System.Diagnostics.ProcessStartInfo
 M cs.system.runtime.interopservices.CharSet
 M cs.system.threading.ThreadStart
+M solutions.Day6
+C solutions.Day6
 M System.Security.Policy.CodeGroup
 M cs.system.collections.ArrayList
 M System.Text.DecoderFallback

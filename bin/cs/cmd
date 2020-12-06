@@ -19,6 +19,7 @@ src\haxe\io\Eof.cs
 src\solutions\Day2.cs
 src\Type.cs
 src\haxe\io\Error.cs
+src\solutions\Day6.cs
 src\haxe\iterators\ArrayIterator.cs
 src\Reflect.cs
 src\haxe\io\Bytes.cs

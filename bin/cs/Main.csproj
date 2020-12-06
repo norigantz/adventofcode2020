@@ -79,6 +79,8 @@
 	
     <Compile Include="src\haxe\io\Error.cs"/>
 	
+    <Compile Include="src\solutions\Day6.cs"/>
+	
     <Compile Include="src\haxe\iterators\ArrayIterator.cs"/>
 	
     <Compile Include="src\Reflect.cs"/>
