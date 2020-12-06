@@ -28,7 +28,6 @@ namespace solutions {
 			unchecked {
 				global::System.Console.WriteLine(((object) ("Solving Day6") ));
 				global::Array<string> arr = global::haxe.lang.StringExt.split(global::solutions.Day6.input, "\r\n\r\n");
-				global::Array<int> counts = new global::Array<int>(new int[]{});
 				int resultA = 0;
 				int resultB = 0;
 				{
@@ -53,16 +52,13 @@ namespace solutions {
 											groupString = global::haxe.lang.Runtime.concat(groupString, global::Std.@string(answer));
 										}
 										
-										if (groupMap.exists(global::haxe.lang.Runtime.concat("", global::Std.@string(answer)))) {
+										{
 											string tmp = global::haxe.lang.Runtime.concat("", global::Std.@string(answer));
 											{
 												int v = (new global::haxe.lang.Null<int>(( (groupMap.@get(tmp)).@value + 1 ), true)).@value;
 												groupMap.@set(tmp, v);
 											}
 											
-										}
-										else {
-											groupMap.@set(global::haxe.lang.Runtime.concat("", global::Std.@string(answer)), 1);
 										}
 										
 									}
@@ -73,7 +69,6 @@ namespace solutions {
 							
 						}
 						
-						counts.push(groupString.Length);
 						if (( resultA == 0 )) {
 							resultA = groupString.Length;
 						}
@@ -99,13 +94,6 @@ namespace solutions {
 				
 				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", global::haxe.lang.Runtime.toString(resultA))) ));
 				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("b: ", global::haxe.lang.Runtime.toString(resultB))) ));
-			}
-		}
-		
-		
-		public static int charToIndex(string c) {
-			unchecked {
-				return ( (global::haxe.lang.StringExt.charCodeAt(c, 0)).@value - 97 );
 			}
 		}
 		

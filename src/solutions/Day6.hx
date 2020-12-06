@@ -7,7 +7,6 @@ class Day6 {
         Sys.println("Solving Day6");
         var arr:Array<String> = input.split('\r\n\r\n');
 
-        var counts:Array<Int> = [];
         var resultA = 0;
         var resultB = 0;
         
@@ -18,15 +17,10 @@ class Day6 {
             for (person in personArr) {
                 for (answer in person) {
                     if (groupString.indexOf(""+answer) == -1) groupString += answer;
-                    if (groupMap.exists(""+answer)) groupMap[""+answer]++;
-                    else groupMap.set(""+answer, 1);
+                    groupMap[""+answer]++;
                 }
             }
-            counts.push(groupString.length);
-
-            if (resultA == 0) resultA = groupString.length;
-            else resultA += groupString.length;
-
+            resultA = resultA == 0 ? groupString.length : resultA + groupString.length;
             for (key in groupMap.keys()) {
                 if (groupMap[key] == personArr.length) resultB++;
             }            
@@ -34,9 +28,5 @@ class Day6 {
 
         Sys.println('a: ' + resultA);
         Sys.println('b: ' + resultB);
-    }
-
-    static function charToIndex(c:String):Int {
-        return c.charCodeAt(0) - 97;
     }
 }
