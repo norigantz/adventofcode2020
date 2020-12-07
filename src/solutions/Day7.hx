@@ -1,5 +1,4 @@
 package solutions;
-import haxe.Int64;
 using StringTools;
 
 class Day7 {
@@ -16,7 +15,7 @@ class Day7 {
             var ruleSplit = rule.split('contain');
             bagMap[ruleSplit[0].split('bags')[0].rtrim()] = ruleSplit[1];
         }
-        
+
         Sys.println('a: ' + matchBags('shiny gold', new Array<String>(), 0));
         Sys.println('b: ' + countBags('shiny gold', 1));
     }
