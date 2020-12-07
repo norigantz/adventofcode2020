@@ -87,6 +87,8 @@
 	
     <Compile Include="src\haxe\io\Bytes.cs"/>
 	
+    <Compile Include="src\solutions\Day7.cs"/>
+	
     <Compile Include="src\haxe\Constraints.cs"/>
 	
     <Compile Include="src\haxe\iterators\ArrayKeyValueIterator.cs"/>

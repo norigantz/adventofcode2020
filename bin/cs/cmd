@@ -23,6 +23,7 @@ src\solutions\Day6.cs
 src\haxe\iterators\ArrayIterator.cs
 src\Reflect.cs
 src\haxe\io\Bytes.cs
+src\solutions\Day7.cs
 src\haxe\Constraints.cs
 src\haxe\iterators\ArrayKeyValueIterator.cs
 src\haxe\ds\StringMap.cs

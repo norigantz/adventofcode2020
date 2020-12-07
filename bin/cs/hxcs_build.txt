@@ -304,6 +304,8 @@ C haxe.io.Bytes
 M System.Security.AccessControl.EventWaitHandleSecurity
 M System.Security.AccessControl.FileSystemAccessRule
 M cs.system.threading.ParameterizedThreadStart
+M solutions.Day7
+C solutions.Day7
 M cs.system.security.PolicyLevelType
 M cs.system.UriKind
 M System.Globalization.SortKey
