@@ -7,6 +7,7 @@
 /target:exe
 /main:EntryPoint__Main
 src\cs\Boot.cs
+src\solutions\Day8.cs
 src\Std.cs
 src\haxe\lang\Null.cs
 src\solutions\Day1.cs

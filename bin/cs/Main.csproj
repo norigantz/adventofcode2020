@@ -55,6 +55,8 @@
 	
     <Compile Include="src\cs\Boot.cs"/>
 	
+    <Compile Include="src\solutions\Day8.cs"/>
+	
     <Compile Include="src\Std.cs"/>
 	
     <Compile Include="src\haxe\lang\Null.cs"/>
