@@ -67,6 +67,8 @@
 	
     <Compile Include="src\cs\internal\Function.cs"/>
 	
+    <Compile Include="src\solutions\Day9.cs"/>
+	
     <Compile Include="src\solutions\Day3.cs"/>
 	
     <Compile Include="src\Sys.cs"/>

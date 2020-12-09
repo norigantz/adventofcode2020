@@ -136,6 +136,8 @@ M System.Runtime.InteropServices.SafeHandle
 M System.Reflection.Emit.PropertyBuilder
 M cs.system.globalization.DateTimeStyles
 M System.Reflection.Emit.Label
+M solutions.Day9
+C solutions.Day9
 M cs.system.security.cryptography.x509certificates.X509ContentType
 M cs.system.threading.ContextCallback
 M System.Runtime.InteropServices._SignatureHelper

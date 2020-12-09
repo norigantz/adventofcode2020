@@ -95,6 +95,13 @@ public class Main : global::haxe.lang.HxObject {
 			}
 			
 			
+			case "9":
+			{
+				global::solutions.Day9.solve();
+				break;
+			}
+			
+			
 			default:
 			{
 				return false;
