@@ -22,6 +22,7 @@ src\solutions\Day2.cs
 src\Type.cs
 src\haxe\io\Error.cs
 src\solutions\Day6.cs
+src\haxe\Int64.cs
 src\haxe\iterators\ArrayIterator.cs
 src\Reflect.cs
 src\haxe\io\Bytes.cs
@@ -42,5 +43,6 @@ src\solutions\Day5.cs
 src\Main.cs
 src\haxe\io\BytesBuffer.cs
 src\cs\io\NativeInput.cs
+src\haxe\Int64Helper.cs
 src\solutions\Day4.cs
 src\haxe\io\Input.cs

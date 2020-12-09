@@ -272,6 +272,7 @@ M System.Text.DecoderFallback
 M System.Text.RegularExpressions.Group
 M cs.system.security.accesscontrol.NativeObjectSecurity
 M haxe.Int64
+C haxe._Int64.Int64_Impl_
 M System.Threading.ManualResetEvent
 M haxe.iterators.ArrayIterator
 C haxe.iterators.ArrayIterator
@@ -556,6 +557,8 @@ M Enum
 M System.IntPtr
 M System.Runtime.Remoting.IRemotingTypeInfo
 M System.Runtime.Remoting.Messaging.IMessageCtrl
+M haxe.Int64Helper
+C haxe.Int64Helper
 M System.Reflection.Emit.LocalBuilder
 M System.Exception
 M cs.system.Action_1

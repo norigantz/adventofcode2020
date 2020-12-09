@@ -85,6 +85,8 @@
 	
     <Compile Include="src\solutions\Day6.cs"/>
 	
+    <Compile Include="src\haxe\Int64.cs"/>
+	
     <Compile Include="src\haxe\iterators\ArrayIterator.cs"/>
 	
     <Compile Include="src\Reflect.cs"/>
@@ -124,6 +126,8 @@
     <Compile Include="src\haxe\io\BytesBuffer.cs"/>
 	
     <Compile Include="src\cs\io\NativeInput.cs"/>
+	
+    <Compile Include="src\haxe\Int64Helper.cs"/>
 	
     <Compile Include="src\solutions\Day4.cs"/>
 	

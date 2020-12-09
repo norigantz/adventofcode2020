@@ -5,7 +5,34 @@ namespace solutions {
 	public class Day9 : global::haxe.lang.HxObject {
 		
 		static Day9() {
-			global::solutions.Day9.input = global::sys.io.File.getContent("E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day9.txt");
+			unchecked{
+				global::solutions.Day9.input = global::sys.io.File.getContent("E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day9.txt");
+				object __temp_stmt2 = null;
+				{
+					global::Array<string> _this = global::haxe.lang.StringExt.split(global::solutions.Day9.input, "\r\n");
+					global::haxe.lang.Function f = ((global::haxe.lang.Function) (new global::haxe.lang.Closure(typeof(global::haxe._Int64.Int64_Impl_), "parseString", 208459108)) );
+					global::Array<long> ret = new global::Array<long>(((long[]) (new long[_this.length]) ));
+					{
+						int _g = 0;
+						int _g1 = _this.length;
+						while (( _g < _g1 )) {
+							int i = _g++;
+							{
+								long val = ((long) (f.__hx_invoke1_o(default(double), ((string) (_this.__a[i]) ))) );
+								ret.__a[i] = val;
+							}
+							
+						}
+						
+					}
+					
+					__temp_stmt2 = ret;
+				}
+				
+				object __temp_stmt1 = global::Array<object>.__hx_cast<long>(((global::Array) (__temp_stmt2) ));
+				global::solutions.Day9.arr = ((global::Array<long>) (__temp_stmt1) );
+				global::solutions.Day9.preambleLength = 25;
+			}
 		}
 		
 		
@@ -24,9 +51,139 @@ namespace solutions {
 		
 		public static string input;
 		
+		public static global::Array<long> arr;
+		
+		public static int preambleLength;
+		
 		public static void solve() {
-			global::System.Console.WriteLine(((object) ("Solving Day9") ));
-			global::Array<string> arr = global::haxe.lang.StringExt.split(global::solutions.Day9.input, "\r\n");
+			unchecked {
+				global::System.Console.WriteLine(((object) ("Solving Day9") ));
+				long testValue = ((long) (0) );
+				{
+					int _g = global::solutions.Day9.preambleLength;
+					int _g1 = global::solutions.Day9.arr.length;
+					while (( _g < _g1 )) {
+						int i = _g++;
+						testValue = global::solutions.Day9.arr[i];
+						if ( ! (global::solutions.Day9.sumExists(testValue, i)) ) {
+							global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (testValue) )))))) ));
+							global::Array<long> resultBArr = global::solutions.Day9.findContiguousSum(testValue);
+							long resultB = ((long) (( ((long) (resultBArr[0]) ) + ((long) (resultBArr[1]) ) )) );
+							global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("b: ", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (resultB) )))))) ));
+							break;
+						}
+						
+					}
+					
+				}
+				
+			}
+		}
+		
+		
+		public static bool sumExists(long targetValue, int targetIndex) {
+			unchecked {
+				int startIndex = ( targetIndex - global::solutions.Day9.preambleLength );
+				{
+					int _g = startIndex;
+					int _g1 = targetIndex;
+					while (( _g < _g1 )) {
+						int i = _g++;
+						{
+							int _g2 = ( i + 1 );
+							int _g3 = targetIndex;
+							while (( _g2 < _g3 )) {
+								int j = _g2++;
+								if (( ((long) (( ((long) (global::solutions.Day9.arr[i]) ) + ((long) (global::solutions.Day9.arr[j]) ) )) ) == ((long) (targetValue) ) )) {
+									return true;
+								}
+								
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+				return false;
+			}
+		}
+		
+		
+		public static global::Array<long> findContiguousSum(long @value) {
+			unchecked {
+				int rangeStart = 0;
+				int rangeEnd = 0;
+				bool overshot = default(bool);
+				{
+					int _g = 0;
+					int _g1 = global::solutions.Day9.arr.length;
+					while (( _g < _g1 )) {
+						int i = _g++;
+						overshot = false;
+						if (( ((long) (global::solutions.Day9.arr[i]) ) == ((long) (@value) ) )) {
+							continue;
+						}
+						
+						{
+							int _g2 = ( i + 1 );
+							int _g3 = global::solutions.Day9.arr.length;
+							while (( _g2 < _g3 )) {
+								int j = _g2++;
+								if (overshot) {
+									break;
+								}
+								
+								long currSum = ((long) (0) );
+								{
+									int _g4 = i;
+									int _g5 = ( j - 1 );
+									while (( _g4 < _g5 )) {
+										int k = _g4++;
+										currSum = ((long) (( ((long) (currSum) ) + ((long) (global::solutions.Day9.arr[k]) ) )) );
+										if (( ((long) (currSum) ) == ((long) (@value) ) )) {
+											rangeStart = i;
+											rangeEnd = k;
+										}
+										else if (( ((long) (currSum) ) > ((long) (@value) ) )) {
+											overshot = true;
+											break;
+										}
+										
+									}
+									
+								}
+								
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+				long min = global::solutions.Day9.arr[rangeStart];
+				long max = global::solutions.Day9.arr[rangeStart];
+				{
+					int _g6 = rangeStart;
+					int _g7 = rangeEnd;
+					while (( _g6 < _g7 )) {
+						int i1 = _g6++;
+						if (( ((long) (global::solutions.Day9.arr[i1]) ) < ((long) (min) ) )) {
+							min = global::solutions.Day9.arr[i1];
+						}
+						
+						if (( ((long) (global::solutions.Day9.arr[i1]) ) > ((long) (max) ) )) {
+							max = global::solutions.Day9.arr[i1];
+						}
+						
+					}
+					
+				}
+				
+				return new global::Array<long>(new long[]{min, max});
+			}
 		}
 		
 		
