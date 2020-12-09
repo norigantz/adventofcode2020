@@ -71,6 +71,8 @@
 	
     <Compile Include="src\solutions\Day3.cs"/>
 	
+    <Compile Include="src\solutions\Day10.cs"/>
+	
     <Compile Include="src\Sys.cs"/>
 	
     <Compile Include="src\haxe\Exception.cs"/>

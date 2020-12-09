@@ -23,6 +23,7 @@ class Main {
             case "7": Day7.solve();
             case "8": Day8.solve();
             case "9": Day9.solve();
+            case "10": Day10.solve();
             default: return false;
         }
         return true;
