@@ -595,6 +595,11 @@ M System.Runtime.Remoting.IEnvoyInfo
 M cs.system.reflection.EventInfo
 M System.Runtime.InteropServices._MemberInfo
 M System.IServiceProvider
+M haxe.ds.IntMap
+C haxe.ds.IntMap
+C haxe.ds.IntMap
+C haxe.ds._IntMap.IntMapKeyIterator
+C haxe.ds._IntMap.IntMapKeyIterator
 M solutions.Day4
 C solutions.Day4
 M cs.types.UInt64

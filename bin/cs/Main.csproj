@@ -131,6 +131,8 @@
 	
     <Compile Include="src\haxe\Int64Helper.cs"/>
 	
+    <Compile Include="src\haxe\ds\IntMap.cs"/>
+	
     <Compile Include="src\solutions\Day4.cs"/>
 	
     <Compile Include="src\haxe\io\Input.cs"/>

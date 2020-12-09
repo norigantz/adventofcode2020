@@ -5,7 +5,11 @@ namespace solutions {
 	public class Day8 : global::haxe.lang.HxObject {
 		
 		static Day8() {
-			global::solutions.Day8.input = global::sys.io.File.getContent("E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day8.txt");
+			unchecked{
+				global::solutions.Day8.input = global::sys.io.File.getContent("E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day8.txt");
+				global::solutions.Day8.loopNodes = new global::haxe.ds.IntMap<int>();
+				global::solutions.Day8.loopEnd = -1;
+			}
 		}
 		
 		
@@ -24,17 +28,22 @@ namespace solutions {
 		
 		public static string input;
 		
+		public static global::Array<string> instructions;
+		
+		public static global::haxe.ds.IntMap<int> loopNodes;
+		
+		public static int loopEnd;
+		
 		public static void solve() {
 			unchecked {
 				global::System.Console.WriteLine(((object) ("Solving Day8") ));
-				global::Array<string> arr = global::haxe.lang.StringExt.split(global::solutions.Day8.input, "\r\n");
-				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", global::haxe.lang.Runtime.toString(global::solutions.Day8.runInstructions(arr, -1)[0]))) ));
+				global::solutions.Day8.instructions = global::haxe.lang.StringExt.split(global::solutions.Day8.input, "\r\n");
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", global::haxe.lang.Runtime.toString(global::solutions.Day8.runInstructions(0, 0, false)[0]))) ));
 				{
-					int _g = 0;
-					int _g1 = arr.length;
-					while (( _g < _g1 )) {
-						int i = _g++;
-						global::Array<int> resultArr = global::solutions.Day8.runInstructions(arr, i);
+					object key = ((object) (new global::haxe.ds._IntMap.IntMapKeyIterator<int>(((global::haxe.ds.IntMap<int>) (global::haxe.ds.IntMap<object>.__hx_cast<int>(((global::haxe.ds.IntMap) (((global::haxe.IMap<int, int>) (global::solutions.Day8.loopNodes) )) ))) ))) );
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(key, "hasNext", 407283053, null))) {
+						int key1 = ((int) (global::haxe.lang.Runtime.toInt(global::haxe.lang.Runtime.callField(key, "next", 1224901875, null))) );
+						global::Array<int> resultArr = global::solutions.Day8.runInstructions(key1, (((global::haxe.ds.IntMap<int>) (global::haxe.ds.IntMap<object>.__hx_cast<int>(((global::haxe.ds.IntMap) (((global::haxe.IMap<int, int>) (global::solutions.Day8.loopNodes) )) ))) ).@get(key1)).@value, true);
 						if (( resultArr[1] > -1 )) {
 							global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("b: ", global::haxe.lang.Runtime.toString(resultArr[0]))) ));
 							break;
@@ -48,20 +57,23 @@ namespace solutions {
 		}
 		
 		
-		public static global::Array<int> runInstructions(global::Array<string> instructions, int flipPointer) {
+		public static global::Array<int> runInstructions(int startIndex, int accumulator, bool flip) {
 			unchecked {
-				int opPointer = 0;
+				int opPointer = startIndex;
 				global::Array<int> opHistory = new global::Array<int>();
-				int accumulator = 0;
 				int programTerminated = -1;
 				while ( ! (opHistory.contains(opPointer)) ) {
-					if (( opPointer == instructions.length )) {
+					if (( opPointer == global::solutions.Day8.instructions.length )) {
 						programTerminated = 1;
 						break;
 					}
 					
-					global::Array<string> instructionArr = global::haxe.lang.StringExt.split(instructions[opPointer], " ");
-					if (( opPointer == flipPointer )) {
+					if (( ( global::solutions.Day8.loopEnd > -1 ) && ( opPointer == global::solutions.Day8.loopEnd ) )) {
+						break;
+					}
+					
+					global::Array<string> instructionArr = global::haxe.lang.StringExt.split(global::solutions.Day8.instructions[opPointer], " ");
+					if (( flip && ( opPointer == startIndex ) )) {
 						if (( global::haxe.lang.StringExt.indexOf(instructionArr[0], "jmp", default(global::haxe.lang.Null<int>)) > -1 )) {
 							instructionArr[0] = "nop";
 						}
@@ -83,6 +95,10 @@ namespace solutions {
 						
 						case "jmp":
 						{
+							if (( startIndex == 0 )) {
+								((global::haxe.ds.IntMap<int>) (global::haxe.ds.IntMap<object>.__hx_cast<int>(((global::haxe.ds.IntMap) (((global::haxe.IMap<int, int>) (global::solutions.Day8.loopNodes) )) ))) ).@set(opPointer, accumulator);
+							}
+							
 							opPointer += (global::Std.parseInt(instructionArr[1])).@value;
 							break;
 						}
@@ -90,6 +106,10 @@ namespace solutions {
 						
 						case "nop":
 						{
+							if (( startIndex == 0 )) {
+								((global::haxe.ds.IntMap<int>) (global::haxe.ds.IntMap<object>.__hx_cast<int>(((global::haxe.ds.IntMap) (((global::haxe.IMap<int, int>) (global::solutions.Day8.loopNodes) )) ))) ).@set(opPointer, accumulator);
+							}
+							
 							 ++ opPointer;
 							break;
 						}
@@ -103,6 +123,10 @@ namespace solutions {
 						
 					}
 					
+				}
+				
+				if (( ( startIndex == 0 ) && ( programTerminated < 1 ) )) {
+					global::solutions.Day8.loopEnd = opPointer;
 				}
 				
 				return new global::Array<int>(new int[]{accumulator, programTerminated});
