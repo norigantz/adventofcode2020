@@ -4,28 +4,18 @@ class Day8 {
     static var input:String = sys.io.File.getContent('E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day8.txt');
 
     static var instructions:Array<String>;
-
-    static var loopNodes:Map<Int, Int> = new Map<Int, Int>();
-
+    static var testNodes:Map<Int, Int> = new Map<Int, Int>();
+    static var loopHistory:Array<Int> = new Array<Int>();
     static var loopEnd:Int = -1;
 
     public static function solve() {
         Sys.println("Solving Day8");
         instructions = input.split('\r\n');
 
-        Sys.println('a: ' + runInstructions(0, 0, false)[0]);
+        Sys.println('a: ' + runInstructions());
 
-        // for (i in 0...arr.length) {
-        //     var resultArr = runInstructions(arr, 0, i);
-        //     if (resultArr[1] > -1) {
-        //         Sys.println('b: ' + resultArr[0]);
-        //         break;
-        //     }
-        // }
-        for (key in loopNodes.keys()) {
-            // Sys.println(key + ', ' + loopNodes[key] + ', ' + loopEnd);
-            var resultArr = runInstructions(key, loopNodes[key], true);
-            // Sys.println(resultArr);
+        for (key in testNodes.keys()) {
+            var resultArr = findFault(key, testNodes[key]);
             if (resultArr[1] > -1) {
                 Sys.println('b: ' + resultArr[0]);
                 break;
@@ -33,45 +23,59 @@ class Day8 {
         }
     }
 
-    static function runInstructions(startIndex:Int, accumulator:Int, flip:Bool):Array<Int> {
-        var opPointer:Int = startIndex;
-        var opHistory:Array<Int> = new Array<Int>();
-        var programTerminated = -1;
+    static function runInstructions():Int {
+        var index = 0;
+        var accumulator = 0;
+        var opArr:Array<Int>;
+        var instructionArr:Array<String>;
 
-        while (!opHistory.contains(opPointer)) {
-            if (opPointer == instructions.length) {
+        while (!loopHistory.contains(index)) {
+            instructionArr = instructions[index].split(' ');
+            loopHistory.push(index);
+            if (instructionArr[0].indexOf('jmp') > -1 || instructionArr[0].indexOf('nop') > -1) testNodes[index] = accumulator;
+            opArr = runOp(instructionArr, index, accumulator);
+            index = opArr[0];
+            accumulator = opArr[1];
+        }
+        loopEnd = index;
+        return accumulator;
+    }
+
+    static function findFault(startIndex:Int, accumulator:Int):Array<Int> {
+        var index = startIndex;
+        var programTerminated = -1;
+        var opArr:Array<Int>;
+        var instructionArr:Array<String>;
+
+        while (index != loopEnd) {
+            if (index != startIndex && loopHistory.contains(index)) break;
+            if (index == instructions.length) {
                 programTerminated = 1;
                 break;
             }
-            if (loopEnd > -1 && opPointer == loopEnd) {
-                break;
-            }
-            var instructionArr = instructions[opPointer].split(' ');
-            if (flip && opPointer == startIndex) {
+            instructionArr = instructions[index].split(' ');
+            if (index == startIndex) {
                 if (instructionArr[0].indexOf('jmp') > -1) instructionArr[0] = 'nop';
                 else if (instructionArr[0].indexOf('nop') > -1) instructionArr[0] = 'jmp';
             }
-            opHistory.push(opPointer);
-            switch (instructionArr[0]) {
-                case "acc":
-                    accumulator += Std.parseInt(instructionArr[1]);
-                    opPointer++;
-                case "jmp":
-                    if (startIndex == 0) loopNodes[opPointer] = accumulator;
-                    opPointer += Std.parseInt(instructionArr[1]);
-                case "nop":
-                    if (startIndex == 0) loopNodes[opPointer] = accumulator;
-                    opPointer++;
-                default: Sys.println("Bad instruction");
-            }
-        }
-        if (startIndex == 0 && programTerminated < 1) {
-            loopEnd = opPointer;
+            opArr = runOp(instructionArr, index, accumulator);
+            index = opArr[0];
+            accumulator = opArr[1];
         }
         return [accumulator, programTerminated];
     }
 
-    static function findFault(startIndex:Int, accumulator:Int) {
-        
+    static function runOp(op:Array<String>, index:Int, accumulator:Int):Array<Int> {
+        switch (op[0]) {
+            case "acc":
+                accumulator += Std.parseInt(op[1]);
+                index++;
+            case "jmp":
+                index += Std.parseInt(op[1]);
+            case "nop":
+                index++;
+            default: Sys.println("Bad instruction");
+        }
+        return [index, accumulator];
     }
 }
