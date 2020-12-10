@@ -25,8 +25,160 @@ namespace solutions {
 		public static string input;
 		
 		public static void solve() {
-			global::System.Console.WriteLine(((object) ("Solving Day10") ));
-			global::Array<string> arr = global::haxe.lang.StringExt.split(global::solutions.Day10.input, "\r\n");
+			unchecked {
+				global::System.Console.WriteLine(((object) ("Solving Day10") ));
+				global::Array<string> _this = global::haxe.lang.StringExt.split(global::solutions.Day10.input, "\r\n");
+				global::haxe.lang.Function f = ((global::haxe.lang.Function) (new global::haxe.lang.Closure(typeof(global::Std), "parseInt", 1450317436)) );
+				global::Array<object> ret = new global::Array<object>(((object[]) (new object[_this.length]) ));
+				{
+					int _g = 0;
+					int _g1 = _this.length;
+					while (( _g < _g1 )) {
+						int i = _g++;
+						{
+							global::haxe.lang.Null<int> val = global::haxe.lang.Null<object>.ofDynamic<int>(f.__hx_invoke1_o(default(double), ((string) (_this.__a[i]) )));
+							ret.__a[i] = (val).toDynamic();
+						}
+						
+					}
+					
+				}
+				
+				global::Array<int> arr = ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) (ret) ))) );
+				global::haxe.ds.IntMap<int> joltageDiffs = new global::haxe.ds.IntMap<int>();
+				global::Array<int> diffSequence = new global::Array<int>();
+				arr.sort(( (( global::solutions.Day10_solve_11__Fun.__hx_current != null )) ? (global::solutions.Day10_solve_11__Fun.__hx_current) : (global::solutions.Day10_solve_11__Fun.__hx_current = ((global::solutions.Day10_solve_11__Fun) (new global::solutions.Day10_solve_11__Fun()) )) ));
+				int deviceJoltage = ( arr[( arr.length - 1 )] + 3 );
+				{
+					int tmp = arr[0];
+					{
+						int v = (new global::haxe.lang.Null<int>(( (joltageDiffs.@get(tmp)).@value + 1 ), true)).@value;
+						joltageDiffs.@set(tmp, v);
+					}
+					
+				}
+				
+				diffSequence.push(arr[0]);
+				{
+					int _g2 = 1;
+					int _g3 = arr.length;
+					while (( _g2 < _g3 )) {
+						int i1 = _g2++;
+						int diff = ( arr[i1] - arr[( i1 - 1 )] );
+						{
+							int tmp1 = diff;
+							{
+								int v1 = (new global::haxe.lang.Null<int>(( (joltageDiffs.@get(tmp1)).@value + 1 ), true)).@value;
+								joltageDiffs.@set(tmp1, v1);
+							}
+							
+						}
+						
+						diffSequence.push(diff);
+					}
+					
+				}
+				
+				{
+					int tmp2 = ( deviceJoltage - arr[( arr.length - 1 )] );
+					{
+						int v2 = (new global::haxe.lang.Null<int>(( (joltageDiffs.@get(tmp2)).@value + 1 ), true)).@value;
+						joltageDiffs.@set(tmp2, v2);
+					}
+					
+				}
+				
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", global::haxe.lang.Runtime.toString(( (joltageDiffs.@get(1)).@value * (joltageDiffs.@get(3)).@value )))) ));
+				global::Array<int> lengthsOfRemovableOnes = new global::Array<int>();
+				int oneCounter = 0;
+				{
+					int _g4 = 0;
+					int _g5 = diffSequence.length;
+					while (( _g4 < _g5 )) {
+						int i2 = _g4++;
+						if (( diffSequence[i2] == 1 )) {
+							 ++ oneCounter;
+						}
+						
+						if (( diffSequence[i2] == 3 )) {
+							if (( oneCounter > 1 )) {
+								lengthsOfRemovableOnes.push(( oneCounter - 1 ));
+							}
+							
+							oneCounter = 0;
+						}
+						else if (( ( ( i2 + 1 ) >= diffSequence.length ) && ( oneCounter > 1 ) )) {
+							lengthsOfRemovableOnes.push(( oneCounter - 1 ));
+						}
+						
+					}
+					
+				}
+				
+				double resultB = 1.0;
+				{
+					int _g6 = 0;
+					while (( _g6 < lengthsOfRemovableOnes.length )) {
+						int length = lengthsOfRemovableOnes[_g6];
+						 ++ _g6;
+						switch (length) {
+							case 1:
+							{
+								resultB *= ((double) (2) );
+								break;
+							}
+							
+							
+							case 2:
+							{
+								resultB *= ((double) (4) );
+								break;
+							}
+							
+							
+							case 3:
+							{
+								resultB *= ((double) (7) );
+								break;
+							}
+							
+							
+							default:
+							{
+								global::System.Console.WriteLine(((object) ("Unhandled length in lengthsOfRemovableOnes") ));
+								break;
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("b: ", global::haxe.lang.Runtime.toString(resultB))) ));
+			}
+		}
+		
+		
+	}
+}
+
+
+
+#pragma warning disable 109, 114, 219, 429, 168, 162
+namespace solutions {
+	public class Day10_solve_11__Fun : global::haxe.lang.Function {
+		
+		public Day10_solve_11__Fun() : base(2, 1) {
+		}
+		
+		
+		public static global::solutions.Day10_solve_11__Fun __hx_current;
+		
+		public override double __hx_invoke2_f(double __fn_float1, object __fn_dyn1, double __fn_float2, object __fn_dyn2) {
+			int b = ( (( __fn_dyn2 == global::haxe.lang.Runtime.undefined )) ? (((int) (__fn_float2) )) : (((int) (global::haxe.lang.Runtime.toInt(__fn_dyn2)) )) );
+			int a = ( (( __fn_dyn1 == global::haxe.lang.Runtime.undefined )) ? (((int) (__fn_float1) )) : (((int) (global::haxe.lang.Runtime.toInt(__fn_dyn1)) )) );
+			return ((double) (( a - b )) );
 		}
 		
 		

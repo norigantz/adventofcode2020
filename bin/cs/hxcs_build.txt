@@ -173,6 +173,7 @@ M cs.StdTypes
 M System.Reflection.ManifestResourceInfo
 M solutions.Day10
 C solutions.Day10
+C solutions.Day10_solve_11__Fun
 M System.Delegate
 M cs.system.globalization.UnicodeCategory
 M System.Runtime.InteropServices._LocalBuilder
