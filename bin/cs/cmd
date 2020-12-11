@@ -14,6 +14,7 @@ src\solutions\Day1.cs
 src\Array.cs
 src\cs\internal\Function.cs
 src\solutions\Day9.cs
+src\solutions\Day11.cs
 src\solutions\Day3.cs
 src\solutions\Day10.cs
 src\Sys.cs

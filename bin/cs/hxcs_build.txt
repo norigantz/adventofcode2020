@@ -142,6 +142,8 @@ M cs.system.security.cryptography.x509certificates.X509ContentType
 M cs.system.threading.ContextCallback
 M System.Runtime.InteropServices._SignatureHelper
 M System.Collections.DictionaryEntry
+M solutions.Day11
+C solutions.Day11
 M System.Security.AccessControl.FileSecurity
 M System.Threading.HostExecutionContext
 M System.Security.Policy.TrustManagerContext
