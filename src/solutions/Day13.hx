@@ -24,21 +24,17 @@ class Day13 {
 
         Sys.println('a: ' + nextBusId * (nextBusTime - arrivalAtStationTime));
 
-        var busInts:Array<Int> = new Array<Int>();
-        for (i in 0...busIds.length)
-            busInts[i] = busIds[i];
-
-        var currTime:Int64 = busInts[0];
-        var iterator:Int64 = busInts[0];
+        var currTime:Int64 = Std.int(busIds[0]);
+        var iterator:Int64 = Std.int(busIds[0]);
         var busesFound:Array<Int> = [busIds[0]];
         while (true) {
             currTime += iterator;
             var allSequentialBuses = true;
             for (i in 0...busIds.length) {
                 if (busIds[i] == null || busesFound.contains(busIds[i])) continue;
-                if ((currTime + i) % busInts[i] == 0) {
-                    busesFound.push(busInts[i]);
-                    iterator *= busInts[i];
+                if ((currTime + i) % busIds[i] == 0) {
+                    busesFound.push(Std.int(busIds[i]));
+                    iterator *= Std.int(busIds[i]);
                 }
                 else {
                     allSequentialBuses = false;
