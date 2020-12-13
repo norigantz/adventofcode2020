@@ -5,7 +5,7 @@ namespace solutions {
 	public class Day13 : global::haxe.lang.HxObject {
 		
 		static Day13() {
-			global::solutions.Day13.input = global::sys.io.File.getContent("E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day13Example6.txt");
+			global::solutions.Day13.input = global::sys.io.File.getContent("E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day13.txt");
 		}
 		
 		
@@ -80,18 +80,11 @@ namespace solutions {
 					
 				}
 				
-				global::System.Console.WriteLine(((object) (busInts) ));
 				long currTime = ((long) (busInts[0]) );
 				long iterator = ((long) (busInts[0]) );
 				global::Array<int> busesFound = new global::Array<int>(new int[]{((int) (global::haxe.lang.Runtime.toInt(busIds[0])) )});
-				long printer = ((long) (0) );
 				while (true) {
 					currTime += iterator;
-					printer += ((long) (1) );
-					if (( ( (( printer - 1 )) % 1000000 ) == 0 )) {
-						global::System.Console.WriteLine(((object) (currTime) ));
-					}
-					
 					bool allSequentialBuses = true;
 					{
 						int _g5 = 0;
@@ -102,10 +95,9 @@ namespace solutions {
 								continue;
 							}
 							
-							if (( ( currTime % busInts[i2] ) == ( busInts[i2] - i2 ) )) {
+							if (( ( (( currTime + i2 )) % busInts[i2] ) == 0 )) {
 								busesFound.push(busInts[i2]);
 								iterator *= ((long) (busInts[i2]) );
-								global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat(global::Std.@string(busesFound), ", "), global::Std.@string(iterator)), ", "), global::Std.@string(currTime))) ));
 							}
 							else {
 								allSequentialBuses = false;
@@ -121,34 +113,8 @@ namespace solutions {
 					
 				}
 				
-				global::System.Console.WriteLine(((object) (currTime) ));
-				{
-					int _g7 = 0;
-					while (( _g7 < 100 )) {
-						int i3 = _g7++;
-						if (( ( ( 7 * i3 ) % 19 ) == 12 )) {
-							global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.toString(( 7 * i3 )), ", "), global::haxe.lang.Runtime.toString(( ( 7 * i3 ) % 19 )))) ));
-						}
-						
-					}
-					
-				}
-				
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("b: ", global::Std.@string(currTime))) ));
 			}
-		}
-		
-		
-		public static int gcd(int a, int b) {
-			if (( b == 0 )) {
-				return a;
-			}
-			
-			return global::solutions.Day13.gcd(b, ( a % b ));
-		}
-		
-		
-		public static int lcm(int a, int b) {
-			return ( ( a / global::solutions.Day13.gcd(a, b) ) * b );
 		}
 		
 		
