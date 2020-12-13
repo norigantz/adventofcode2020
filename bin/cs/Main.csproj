@@ -67,6 +67,8 @@
 	
     <Compile Include="src\cs\internal\Function.cs"/>
 	
+    <Compile Include="src\solutions\Day13.cs"/>
+	
     <Compile Include="src\solutions\Day9.cs"/>
 	
     <Compile Include="src\solutions\Day11.cs"/>
@@ -86,6 +88,8 @@
     <Compile Include="src\Type.cs"/>
 	
     <Compile Include="src\haxe\io\Error.cs"/>
+	
+    <Compile Include="src\solutions\Day12.cs"/>
 	
     <Compile Include="src\solutions\Day6.cs"/>
 	

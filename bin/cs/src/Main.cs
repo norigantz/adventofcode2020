@@ -60,6 +60,20 @@ public class Main : global::haxe.lang.HxObject {
 			}
 			
 			
+			case "12":
+			{
+				global::solutions.Day12.solve();
+				break;
+			}
+			
+			
+			case "13":
+			{
+				global::solutions.Day13.solve();
+				break;
+			}
+			
+			
 			case "2":
 			{
 				global::solutions.Day2.solve();

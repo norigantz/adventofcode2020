@@ -13,6 +13,7 @@ src\haxe\lang\Null.cs
 src\solutions\Day1.cs
 src\Array.cs
 src\cs\internal\Function.cs
+src\solutions\Day13.cs
 src\solutions\Day9.cs
 src\solutions\Day11.cs
 src\solutions\Day3.cs
@@ -23,6 +24,7 @@ src\haxe\io\Eof.cs
 src\solutions\Day2.cs
 src\Type.cs
 src\haxe\io\Error.cs
+src\solutions\Day12.cs
 src\solutions\Day6.cs
 src\haxe\Int64.cs
 src\haxe\iterators\ArrayIterator.cs

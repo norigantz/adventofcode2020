@@ -135,6 +135,8 @@ M cs.system.reflection.TypeFilter
 M System.Runtime.InteropServices.SafeHandle
 M System.Reflection.Emit.PropertyBuilder
 M cs.system.globalization.DateTimeStyles
+M solutions.Day13
+C solutions.Day13
 M System.Reflection.Emit.Label
 M solutions.Day9
 C solutions.Day9
@@ -256,6 +258,8 @@ C haxe.io.Error_Overflow
 C haxe.io.Error_OutsideBounds
 C haxe.io.Error_Custom
 M Any
+M solutions.Day12
+C solutions.Day12
 M cs.system.io.FileAttributes
 M System.IDisposable
 M cs.system.UriPartial

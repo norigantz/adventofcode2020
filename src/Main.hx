@@ -25,6 +25,8 @@ class Main {
             case "9": Day9.solve();
             case "10": Day10.solve();
             case "11": Day11.solve();
+            case "12": Day12.solve();
+            case "13": Day13.solve();
             default: return false;
         }
         return true;
