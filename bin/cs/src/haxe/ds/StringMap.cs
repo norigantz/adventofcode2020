@@ -433,6 +433,21 @@ namespace haxe.ds {
 		}
 		
 		
+		public virtual void clear() {
+			unchecked {
+				this.hashes = null;
+				this._keys = null;
+				this.vals = null;
+				this.nBuckets = 0;
+				this.size = 0;
+				this.nOccupied = 0;
+				this.upperBound = 0;
+				this.cachedKey = null;
+				this.cachedIndex = -1;
+			}
+		}
+		
+		
 		public override double __hx_setField_f(string field, int hash, double @value, bool handleProperties) {
 			unchecked {
 				switch (hash) {
@@ -562,6 +577,12 @@ namespace haxe.ds {
 		public override object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties) {
 			unchecked {
 				switch (hash) {
+					case 1213952397:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "clear", 1213952397)) );
+					}
+					
+					
 					case 1071652316:
 					{
 						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "exists", 1071652316)) );
@@ -704,6 +725,13 @@ namespace haxe.ds {
 		public override object __hx_invokeField(string field, int hash, object[] dynargs) {
 			unchecked {
 				switch (hash) {
+					case 1213952397:
+					{
+						this.clear();
+						break;
+					}
+					
+					
 					case 1071652316:
 					{
 						return this.exists(global::haxe.lang.Runtime.toString(dynargs[0]));
@@ -781,6 +809,8 @@ namespace haxe.ds {
 		void resize(int newNBuckets);
 		
 		bool exists(string key);
+		
+		void clear();
 		
 	}
 }

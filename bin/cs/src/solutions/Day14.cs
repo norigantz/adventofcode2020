@@ -7,7 +7,7 @@ namespace solutions {
 		static Day14() {
 			global::solutions.Day14.input = global::sys.io.File.getContent("E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day14.txt");
 			global::solutions.Day14.arr = global::haxe.lang.StringExt.split(global::solutions.Day14.input, "\r\n");
-			global::solutions.Day14.memory = new global::haxe.ds.IntMap<long>();
+			global::solutions.Day14.memory = new global::haxe.ds.StringMap<long>();
 		}
 		
 		
@@ -28,12 +28,12 @@ namespace solutions {
 		
 		public static global::Array<string> arr;
 		
-		public static global::haxe.ds.IntMap<long> memory;
+		public static global::haxe.ds.StringMap<long> memory;
 		
 		public static void solve() {
 			global::System.Console.WriteLine(((object) ("Solving Day14") ));
 			global::solutions.Day14.decoderV1();
-			((global::haxe.ds.IntMap<long>) (global::haxe.ds.IntMap<object>.__hx_cast<long>(((global::haxe.ds.IntMap) (((global::haxe.IMap<int, long>) (global::solutions.Day14.memory) )) ))) ).clear();
+			((global::haxe.ds.StringMap<long>) (global::haxe.ds.StringMap<object>.__hx_cast<long>(((global::haxe.ds.StringMap) (((global::haxe.IMap<string, long>) (global::solutions.Day14.memory) )) ))) ).clear();
 			global::solutions.Day14.decoderV2();
 		}
 		
@@ -55,16 +55,16 @@ namespace solutions {
 						else if (( global::haxe.lang.StringExt.substr(instruct, 0, new global::haxe.lang.Null<int>(3, true)) == "mem" )) {
 							string addr = global::haxe.lang.StringExt.split(instruct, "[")[1];
 							int parsedAddress = ((int) (((double) ((global::Std.parseInt(global::haxe.lang.StringExt.substr(addr, 0, new global::haxe.lang.Null<int>(( addr.Length - 1 ), true)))).@value) )) );
-							global::Array<int> writeAddresses = global::solutions.Day14.applyMaskToAddress(mask, parsedAddress);
+							global::Array<string> writeAddresses = global::solutions.Day14.applyMaskToAddress(mask, parsedAddress);
 							{
 								int _g2 = 0;
 								while (( _g2 < writeAddresses.length )) {
-									int address = writeAddresses[_g2];
+									string address = writeAddresses[_g2];
 									 ++ _g2;
 									{
-										global::haxe.IMap<int, long> this1 = global::solutions.Day14.memory;
+										global::haxe.IMap<string, long> this1 = global::solutions.Day14.memory;
 										long v = ((long) ((global::Std.parseInt(lineArr[1].TrimStart())).@value) );
-										((global::haxe.ds.IntMap<long>) (global::haxe.ds.IntMap<object>.__hx_cast<long>(((global::haxe.ds.IntMap) (this1) ))) ).@set(address, v);
+										((global::haxe.ds.StringMap<long>) (global::haxe.ds.StringMap<object>.__hx_cast<long>(((global::haxe.ds.StringMap) (this1) ))) ).@set(address, v);
 									}
 									
 								}
@@ -79,10 +79,10 @@ namespace solutions {
 				
 				long sum = ((long) (0) );
 				{
-					object key = ((object) (new global::haxe.ds._IntMap.IntMapKeyIterator<long>(((global::haxe.ds.IntMap<long>) (global::haxe.ds.IntMap<object>.__hx_cast<long>(((global::haxe.ds.IntMap) (((global::haxe.IMap<int, long>) (global::solutions.Day14.memory) )) ))) ))) );
+					object key = ((object) (new global::haxe.ds._StringMap.StringMapKeyIterator<long>(((global::haxe.ds.StringMap<long>) (global::haxe.ds.StringMap<object>.__hx_cast<long>(((global::haxe.ds.StringMap) (((global::haxe.IMap<string, long>) (global::solutions.Day14.memory) )) ))) ))) );
 					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(key, "hasNext", 407283053, null))) {
-						int key1 = ((int) (global::haxe.lang.Runtime.toInt(global::haxe.lang.Runtime.callField(key, "next", 1224901875, null))) );
-						sum = ( ((long) (sum) ) + (((global::haxe.ds.IntMap<long>) (global::haxe.ds.IntMap<object>.__hx_cast<long>(((global::haxe.ds.IntMap) (((global::haxe.IMap<int, long>) (global::solutions.Day14.memory) )) ))) ).@get(key1)).@value );
+						string key1 = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(key, "next", 1224901875, null));
+						sum = ( ((long) (sum) ) + (((global::haxe.ds.StringMap<long>) (global::haxe.ds.StringMap<object>.__hx_cast<long>(((global::haxe.ds.StringMap) (((global::haxe.IMap<string, long>) (global::solutions.Day14.memory) )) ))) ).@get(key1)).@value );
 					}
 					
 				}
@@ -92,12 +92,12 @@ namespace solutions {
 		}
 		
 		
-		public static global::Array<int> applyMaskToAddress(string mask, int address) {
+		public static global::Array<string> applyMaskToAddress(string mask, int address) {
 			unchecked {
-				int initialOutputAddress = address;
+				long initialOutputAddress = ((long) (address) );
 				global::Array<int> floatingBits = new global::Array<int>();
 				int currBit = 0;
-				int one = 1;
+				long one = ((long) (1) );
 				while (( currBit < mask.Length )) {
 					switch (global::haxe.lang.StringExt.charAt(mask, ( ( mask.Length - 1 ) - currBit ))) {
 						case "0":
@@ -108,7 +108,7 @@ namespace solutions {
 						
 						case "1":
 						{
-							initialOutputAddress |= ( one << currBit );
+							initialOutputAddress = ((long) (( ((long) (initialOutputAddress) ) | ((long) (( ((long) (one) ) << currBit )) ) )) );
 							break;
 						}
 						
@@ -131,32 +131,31 @@ namespace solutions {
 					 ++ currBit;
 				}
 				
-				global::Array<int> writeAddresses = new global::Array<int>();
-				int newAddress = default(int);
-				int floatingMask = 0;
-				while (( floatingMask < global::System.Math.Pow(((double) (2) ), ((double) (floatingBits.length) )) )) {
+				global::Array<string> writeAddresses = new global::Array<string>();
+				long newAddress = default(long);
+				long floatingMask = ((long) (0) );
+				while (( ((long) (floatingMask) ) < ((long) (global::System.Math.Pow(((double) (2) ), ((double) (floatingBits.length) ))) ) )) {
 					newAddress = initialOutputAddress;
 					{
 						int _g = 0;
 						int _g1 = floatingBits.length;
 						while (( _g < _g1 )) {
 							int i = _g++;
-							if (( (( floatingMask & ( one << i ) )) > 0 )) {
-								newAddress |= ( one << floatingBits[i] );
+							if (( (((long) (( ((long) (floatingMask) ) & ((long) (( ((long) (one) ) << i )) ) )) )) > ((long) (0) ) )) {
+								newAddress = ((long) (( ((long) (newAddress) ) | ((long) (( ((long) (one) ) << floatingBits[i] )) ) )) );
 							}
 							else {
-								newAddress &=  ~ ((( one << floatingBits[i] ))) ;
+								newAddress = ((long) (( ((long) (newAddress) ) & ((long) ( ~ ((((long) (( ((long) (one) ) << floatingBits[i] )) ))) ) ) )) );
 							}
 							
 						}
 						
 					}
 					
-					writeAddresses.push(newAddress);
-					 ++ floatingMask;
+					writeAddresses.push(global::haxe.lang.Runtime.concat("", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (newAddress) ))))));
+					floatingMask += ((long) (1) );
 				}
 				
-				global::System.Console.WriteLine(((object) (writeAddresses) ));
 				return writeAddresses;
 			}
 		}
@@ -178,7 +177,13 @@ namespace solutions {
 						}
 						else if (( global::haxe.lang.StringExt.substr(instruct, 0, new global::haxe.lang.Null<int>(3, true)) == "mem" )) {
 							string addr = global::haxe.lang.StringExt.split(instruct, "[")[1];
-							((global::haxe.ds.IntMap<long>) (global::haxe.ds.IntMap<object>.__hx_cast<long>(((global::haxe.ds.IntMap) (((global::haxe.IMap<int, long>) (global::solutions.Day14.memory) )) ))) ).@set((global::Std.parseInt(global::haxe.lang.StringExt.substr(addr, 0, new global::haxe.lang.Null<int>(( addr.Length - 1 ), true)))).@value, global::solutions.Day14.applyMaskToValue(mask, ((long) ((global::Std.parseInt(lineArr[1].TrimStart())).@value) )));
+							{
+								global::haxe.IMap<string, long> this1 = global::solutions.Day14.memory;
+								string k = global::haxe.lang.StringExt.substr(addr, 0, new global::haxe.lang.Null<int>(( addr.Length - 1 ), true));
+								long v = global::solutions.Day14.applyMaskToValue(mask, ((long) ((global::Std.parseInt(lineArr[1].TrimStart())).@value) ));
+								((global::haxe.ds.StringMap<long>) (global::haxe.ds.StringMap<object>.__hx_cast<long>(((global::haxe.ds.StringMap) (this1) ))) ).@set(k, v);
+							}
+							
 						}
 						
 					}
@@ -187,10 +192,10 @@ namespace solutions {
 				
 				long sum = ((long) (0) );
 				{
-					object key = ((object) (new global::haxe.ds._IntMap.IntMapKeyIterator<long>(((global::haxe.ds.IntMap<long>) (global::haxe.ds.IntMap<object>.__hx_cast<long>(((global::haxe.ds.IntMap) (((global::haxe.IMap<int, long>) (global::solutions.Day14.memory) )) ))) ))) );
+					object key = ((object) (new global::haxe.ds._StringMap.StringMapKeyIterator<long>(((global::haxe.ds.StringMap<long>) (global::haxe.ds.StringMap<object>.__hx_cast<long>(((global::haxe.ds.StringMap) (((global::haxe.IMap<string, long>) (global::solutions.Day14.memory) )) ))) ))) );
 					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(key, "hasNext", 407283053, null))) {
-						int key1 = ((int) (global::haxe.lang.Runtime.toInt(global::haxe.lang.Runtime.callField(key, "next", 1224901875, null))) );
-						sum = ( ((long) (sum) ) + (((global::haxe.ds.IntMap<long>) (global::haxe.ds.IntMap<object>.__hx_cast<long>(((global::haxe.ds.IntMap) (((global::haxe.IMap<int, long>) (global::solutions.Day14.memory) )) ))) ).@get(key1)).@value );
+						string key1 = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(key, "next", 1224901875, null));
+						sum = ( ((long) (sum) ) + (((global::haxe.ds.StringMap<long>) (global::haxe.ds.StringMap<object>.__hx_cast<long>(((global::haxe.ds.StringMap) (((global::haxe.IMap<string, long>) (global::solutions.Day14.memory) )) ))) ).@get(key1)).@value );
 					}
 					
 				}

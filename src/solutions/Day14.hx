@@ -7,7 +7,7 @@ class Day14 {
     static var input:String = sys.io.File.getContent('E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day14.txt');
 
     static var arr:Array<String> = input.split('\r\n');
-    static var memory:Map<Int, Int64> = new Map<Int, Int64>();
+    static var memory:Map<String, Int64> = new Map<String, Int64>();
 
     public static function solve() {
         Sys.println("Solving Day14");
@@ -40,11 +40,11 @@ class Day14 {
         Sys.println('b: ' + sum);
     }
 
-    static function applyMaskToAddress(mask:String, address:Int):Array<Int> {
-        var initialOutputAddress:Int = address;
+    static function applyMaskToAddress(mask:String, address:Int):Array<String> {
+        var initialOutputAddress:Int64 = address;
         var floatingBits:Array<Int> = new Array<Int>();
         var currBit = 0;
-        var one:Int = 1;
+        var one:Int64 = 1;
         while (currBit < mask.length) {
             switch (mask.charAt(mask.length-1-currBit)) {
                 case 'X':
@@ -56,9 +56,9 @@ class Day14 {
             }
             currBit++;
         }
-        var writeAddresses:Array<Int> = new Array<Int>();
-        var newAddress:Int;
-        var floatingMask:Int = 0;
+        var writeAddresses:Array<String> = new Array<String>();
+        var newAddress:Int64;
+        var floatingMask:Int64 = 0;
         while (floatingMask < Math.pow(2, floatingBits.length)) {
             newAddress = initialOutputAddress;
             for (i in 0...floatingBits.length) {
@@ -67,10 +67,9 @@ class Day14 {
                 else
                     newAddress &= ~(one<<floatingBits[i]);
             }
-            writeAddresses.push(newAddress);
+            writeAddresses.push(""+newAddress);
             floatingMask++;
         }
-        Sys.println(writeAddresses);
         return writeAddresses;
     }
 
@@ -84,7 +83,7 @@ class Day14 {
             }
             else if (instruct.substr(0, 3) == "mem") {
                 var addr = instruct.split('[')[1];
-                memory.set(Std.parseInt(addr.substr(0, addr.length-1)), applyMaskToValue(mask, Std.parseInt(lineArr[1].ltrim())));
+                memory[addr.substr(0, addr.length-1)] = applyMaskToValue(mask, Std.parseInt(lineArr[1].ltrim()));
             }
         }
         var sum:Int64 = 0;
