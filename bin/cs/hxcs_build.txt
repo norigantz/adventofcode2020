@@ -568,6 +568,8 @@ M Enum
 M System.IntPtr
 M System.Runtime.Remoting.IRemotingTypeInfo
 M System.Runtime.Remoting.Messaging.IMessageCtrl
+M solutions.Day15
+C solutions.Day15
 M haxe.Int64Helper
 C haxe.Int64Helper
 M System.Reflection.Emit.LocalBuilder

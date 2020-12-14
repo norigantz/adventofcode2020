@@ -48,6 +48,7 @@ src\solutions\Day5.cs
 src\Main.cs
 src\haxe\io\BytesBuffer.cs
 src\cs\io\NativeInput.cs
+src\solutions\Day15.cs
 src\haxe\Int64Helper.cs
 src\haxe\ds\IntMap.cs
 src\solutions\Day4.cs

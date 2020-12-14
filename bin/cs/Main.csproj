@@ -137,6 +137,8 @@
 	
     <Compile Include="src\cs\io\NativeInput.cs"/>
 	
+    <Compile Include="src\solutions\Day15.cs"/>
+	
     <Compile Include="src\haxe\Int64Helper.cs"/>
 	
     <Compile Include="src\haxe\ds\IntMap.cs"/>

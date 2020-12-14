@@ -29,6 +29,13 @@ public class Sys : global::haxe.lang.HxObject {
 	}
 	
 	
+	public static readonly long epochTicks = new global::System.DateTime(1970, 1, 1).Ticks;
+	
+	public static double time() {
+		return ( ((double) (((long) (( ((long) (global::System.DateTime.UtcNow.Ticks) ) - ((long) (global::Sys.epochTicks) ) )) )) ) / ((double) (global::System.TimeSpan.TicksPerSecond) ) );
+	}
+	
+	
 }
 
 

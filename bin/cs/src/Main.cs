@@ -10,6 +10,11 @@ public class EntryPoint__Main {
 
 public class Main : global::haxe.lang.HxObject {
 	
+	static Main() {
+		global::Main.elapsedTime = 0;
+	}
+	
+	
 	public Main(global::haxe.lang.EmptyObject empty) {
 	}
 	
@@ -23,21 +28,27 @@ public class Main : global::haxe.lang.HxObject {
 	}
 	
 	
+	public static double elapsedTime;
+	
 	public static void main() {
 		global::Main.solveDay(global::Sys.args()[0]);
 	}
 	
 	
 	public static void solveDay(string arg) {
-		while ( ! (global::Main.runDaySolver(arg)) ) {
-			global::System.Console.WriteLine(((object) ("No day found. Input a solved day: ") ));
-			arg = ((global::haxe.io.Input) (new global::cs.io.NativeInput(((global::System.IO.Stream) (global::System.Console.OpenStandardInput()) ))) ).readLine();
+		unchecked {
+			while ( ! (global::Main.runDaySolver(arg)) ) {
+				global::System.Console.WriteLine(((object) ("No day found. Input a solved day: ") ));
+				arg = ((global::haxe.io.Input) (new global::cs.io.NativeInput(((global::System.IO.Stream) (global::System.Console.OpenStandardInput()) ))) ).readLine();
+			}
+			
+			global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.toString(( global::Main.elapsedTime * 1000 )), " ms")) ));
 		}
-		
 	}
 	
 	
 	public static bool runDaySolver(string day) {
+		global::Main.elapsedTime = global::Sys.time();
 		switch (day) {
 			case "1":
 			{
@@ -77,6 +88,13 @@ public class Main : global::haxe.lang.HxObject {
 			case "14":
 			{
 				global::solutions.Day14.solve();
+				break;
+			}
+			
+			
+			case "15":
+			{
+				global::solutions.Day15.solve();
 				break;
 			}
 			
@@ -144,6 +162,7 @@ public class Main : global::haxe.lang.HxObject {
 			
 		}
 		
+		global::Main.elapsedTime = ( global::Sys.time() - global::Main.elapsedTime );
 		return true;
 	}
 	

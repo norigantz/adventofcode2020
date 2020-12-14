@@ -1,6 +1,8 @@
 import solutions.*;
 
 class Main {
+    static var elapsedTime:Float = 0;
+
     static function main() {
         solveDay(Sys.args()[0]);
     }
@@ -10,9 +12,11 @@ class Main {
             Sys.println("No day found. Input a solved day: ");
             arg = Sys.stdin().readLine();
         }
+        Sys.println(elapsedTime * 1000 + ' ms');
     }
 
     static function runDaySolver(day:String):Bool {
+        elapsedTime = Sys.time();
         switch day {
             case "1": Day1.solve();
             case "2": Day2.solve();
@@ -28,8 +32,10 @@ class Main {
             case "12": Day12.solve();
             case "13": Day13.solve();
             case "14": Day14.solve();
+            case "15": Day15.solve();
             default: return false;
         }
+        elapsedTime = Sys.time() - elapsedTime;
         return true;
     }
 }
