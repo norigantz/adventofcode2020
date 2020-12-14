@@ -74,6 +74,13 @@ public class Main : global::haxe.lang.HxObject {
 			}
 			
 			
+			case "14":
+			{
+				global::solutions.Day14.solve();
+				break;
+			}
+			
+			
 			case "2":
 			{
 				global::solutions.Day2.solve();

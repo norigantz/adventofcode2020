@@ -121,6 +121,8 @@
 	
     <Compile Include="src\EReg.cs"/>
 	
+    <Compile Include="src\solutions\Day14.cs"/>
+	
     <Compile Include="src\cs\internal\HxObject.cs"/>
 	
     <Compile Include="src\cs\internal\FieldLookup.cs"/>

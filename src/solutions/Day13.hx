@@ -1,6 +1,6 @@
 package solutions;
 
-import cs.StdTypes.Int64;
+import haxe.Int64;
 
 class Day13 {
     static var input:String = sys.io.File.getContent('E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day13.txt');

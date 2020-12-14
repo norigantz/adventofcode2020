@@ -73,7 +73,7 @@ namespace solutions {
 				long iterator = ((long) (((int) (((double) (global::haxe.lang.Runtime.toDouble(busIds[0])) )) )) );
 				global::Array<int> busesFound = new global::Array<int>(new int[]{((int) (global::haxe.lang.Runtime.toInt(busIds[0])) )});
 				while (true) {
-					currTime += iterator;
+					currTime = ((long) (( ((long) (currTime) ) + ((long) (iterator) ) )) );
 					bool allSequentialBuses = true;
 					{
 						int _g3 = 0;
@@ -84,9 +84,9 @@ namespace solutions {
 								continue;
 							}
 							
-							if (( ( (( currTime + i1 )) % (global::haxe.lang.Null<object>.ofDynamic<int>(busIds[i1])).@value ) == 0 )) {
+							if (( ((long) (( (((long) (( ((long) (currTime) ) + ((long) (i1) ) )) )) % ((long) (((int) (global::haxe.lang.Runtime.toInt(busIds[i1])) )) ) )) ) == ((long) (0) ) )) {
 								busesFound.push(((int) (((double) (global::haxe.lang.Runtime.toDouble(busIds[i1])) )) ));
-								iterator *= ((long) (((int) (((double) (global::haxe.lang.Runtime.toDouble(busIds[i1])) )) )) );
+								iterator = ( ((long) (iterator) ) * ((long) (((int) (((double) (global::haxe.lang.Runtime.toDouble(busIds[i1])) )) )) ) );
 							}
 							else {
 								allSequentialBuses = false;
@@ -102,7 +102,7 @@ namespace solutions {
 					
 				}
 				
-				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("b: ", global::Std.@string(currTime))) ));
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("b: ", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (currTime) )))))) ));
 			}
 		}
 		

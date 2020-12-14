@@ -488,6 +488,8 @@ M System.Version
 M cs.system.diagnostics.symbolstore.SymAddressKind
 M cs.system.runtime.interopservices.UnmanagedType
 M System.Runtime.InteropServices._CustomAttributeBuilder
+M solutions.Day14
+C solutions.Day14
 M cs.system.diagnostics.ThreadPriorityLevel
 M System.Reflection.Emit.ParameterToken
 M cs.internal.HxObject
