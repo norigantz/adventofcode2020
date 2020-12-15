@@ -5,7 +5,10 @@ namespace solutions {
 	public class Day15 : global::haxe.lang.HxObject {
 		
 		static Day15() {
-			global::solutions.Day15.input = global::sys.io.File.getContent("E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day15.txt");
+			unchecked{
+				global::solutions.Day15.input = new global::Array<int>(new int[]{0, 3, 1, 6, 7, 5});
+				global::solutions.Day15.inputEx1 = new global::Array<int>(new int[]{0, 3, 6});
+			}
 		}
 		
 		
@@ -22,11 +25,40 @@ namespace solutions {
 		}
 		
 		
-		public static string input;
+		public static global::Array<int> input;
+		
+		public static global::Array<int> inputEx1;
 		
 		public static void solve() {
-			global::System.Console.WriteLine(((object) ("Solving Day15") ));
-			global::Array<string> arr = global::haxe.lang.StringExt.split(global::solutions.Day15.input, "\r\n");
+			unchecked {
+				global::System.Console.WriteLine(((object) ("Solving Day15") ));
+				global::Array<int> arr = global::solutions.Day15.input;
+				global::haxe.ds.IntMap<int> numPlaces = new global::haxe.ds.IntMap<int>();
+				int numCount = 0;
+				int lastNumber = arr[0];
+				while (( numCount < 2019 )) {
+					global::System.Console.WriteLine(((object) (lastNumber) ));
+					if (( numCount < arr.length )) {
+						numPlaces.@set(lastNumber, numCount);
+						 ++ numCount;
+						lastNumber = arr[numCount];
+					}
+					else if ( ! (numPlaces.@get(lastNumber).hasValue) ) {
+						numPlaces.@set(lastNumber, numCount);
+						 ++ numCount;
+						lastNumber = 0;
+					}
+					else {
+						int diff = ( numCount - (numPlaces.@get(lastNumber)).@value );
+						numPlaces.@set(lastNumber, numCount);
+						 ++ numCount;
+						lastNumber = diff;
+					}
+					
+				}
+				
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", global::haxe.lang.Runtime.toString(lastNumber))) ));
+			}
 		}
 		
 		

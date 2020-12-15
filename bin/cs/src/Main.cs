@@ -11,7 +11,7 @@ public class EntryPoint__Main {
 public class Main : global::haxe.lang.HxObject {
 	
 	static Main() {
-		global::Main.elapsedTime = 0;
+		global::Main.elapsedTimes = new global::haxe.ds.StringMap<double>();
 	}
 	
 	
@@ -28,7 +28,7 @@ public class Main : global::haxe.lang.HxObject {
 	}
 	
 	
-	public static double elapsedTime;
+	public static global::haxe.ds.StringMap<double> elapsedTimes;
 	
 	public static void main() {
 		global::Main.solveDay(global::Sys.args()[0]);
@@ -42,13 +42,21 @@ public class Main : global::haxe.lang.HxObject {
 				arg = ((global::haxe.io.Input) (new global::cs.io.NativeInput(((global::System.IO.Stream) (global::System.Console.OpenStandardInput()) ))) ).readLine();
 			}
 			
-			global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.toString(( global::Main.elapsedTime * 1000 )), " ms")) ));
+			{
+				object key = ((object) (new global::haxe.ds._StringMap.StringMapKeyIterator<double>(((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (((global::haxe.IMap<string, double>) (global::Main.elapsedTimes) )) ))) ))) );
+				while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(key, "hasNext", 407283053, null))) {
+					string key1 = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(key, "next", 1224901875, null));
+					global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat("Day ", key1), ": "), global::haxe.lang.Runtime.toString(( (((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (((global::haxe.IMap<string, double>) (global::Main.elapsedTimes) )) ))) ).@get(key1)).@value * 1000 ))), " ms")) ));
+				}
+				
+			}
+			
 		}
 	}
 	
 	
 	public static bool runDaySolver(string day) {
-		global::Main.elapsedTime = global::Sys.time();
+		double elapsedTime = global::Sys.time();
 		switch (day) {
 			case "1":
 			{
@@ -155,6 +163,134 @@ public class Main : global::haxe.lang.HxObject {
 			}
 			
 			
+			case "all":
+			{
+				elapsedTime = global::Sys.time();
+				global::solutions.Day1.solve();
+				{
+					global::haxe.IMap<string, double> this1 = global::Main.elapsedTimes;
+					double v = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this1) ))) ).@set("1", v);
+				}
+				
+				elapsedTime = global::Sys.time();
+				global::solutions.Day2.solve();
+				{
+					global::haxe.IMap<string, double> this11 = global::Main.elapsedTimes;
+					double v1 = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this11) ))) ).@set("2", v1);
+				}
+				
+				elapsedTime = global::Sys.time();
+				global::solutions.Day3.solve();
+				{
+					global::haxe.IMap<string, double> this12 = global::Main.elapsedTimes;
+					double v2 = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this12) ))) ).@set("3", v2);
+				}
+				
+				elapsedTime = global::Sys.time();
+				global::solutions.Day4.solve();
+				{
+					global::haxe.IMap<string, double> this13 = global::Main.elapsedTimes;
+					double v3 = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this13) ))) ).@set("4", v3);
+				}
+				
+				elapsedTime = global::Sys.time();
+				global::solutions.Day5.solve();
+				{
+					global::haxe.IMap<string, double> this14 = global::Main.elapsedTimes;
+					double v4 = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this14) ))) ).@set("5", v4);
+				}
+				
+				elapsedTime = global::Sys.time();
+				global::solutions.Day6.solve();
+				{
+					global::haxe.IMap<string, double> this15 = global::Main.elapsedTimes;
+					double v5 = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this15) ))) ).@set("6", v5);
+				}
+				
+				elapsedTime = global::Sys.time();
+				global::solutions.Day7.solve();
+				{
+					global::haxe.IMap<string, double> this16 = global::Main.elapsedTimes;
+					double v6 = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this16) ))) ).@set("7", v6);
+				}
+				
+				elapsedTime = global::Sys.time();
+				global::solutions.Day8.solve();
+				{
+					global::haxe.IMap<string, double> this17 = global::Main.elapsedTimes;
+					double v7 = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this17) ))) ).@set("8", v7);
+				}
+				
+				elapsedTime = global::Sys.time();
+				global::solutions.Day9.solve();
+				{
+					global::haxe.IMap<string, double> this18 = global::Main.elapsedTimes;
+					double v8 = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this18) ))) ).@set("9", v8);
+				}
+				
+				elapsedTime = global::Sys.time();
+				global::solutions.Day10.solve();
+				{
+					global::haxe.IMap<string, double> this19 = global::Main.elapsedTimes;
+					double v9 = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this19) ))) ).@set("10", v9);
+				}
+				
+				elapsedTime = global::Sys.time();
+				global::solutions.Day11.solve();
+				{
+					global::haxe.IMap<string, double> this110 = global::Main.elapsedTimes;
+					double v10 = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this110) ))) ).@set("11", v10);
+				}
+				
+				elapsedTime = global::Sys.time();
+				global::solutions.Day12.solve();
+				{
+					global::haxe.IMap<string, double> this111 = global::Main.elapsedTimes;
+					double v11 = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this111) ))) ).@set("12", v11);
+				}
+				
+				elapsedTime = global::Sys.time();
+				global::solutions.Day13.solve();
+				{
+					global::haxe.IMap<string, double> this112 = global::Main.elapsedTimes;
+					double v12 = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this112) ))) ).@set("13", v12);
+				}
+				
+				elapsedTime = global::Sys.time();
+				global::solutions.Day14.solve();
+				{
+					global::haxe.IMap<string, double> this113 = global::Main.elapsedTimes;
+					double v13 = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this113) ))) ).@set("14", v13);
+				}
+				
+				elapsedTime = global::Sys.time();
+				global::solutions.Day15.solve();
+				{
+					global::haxe.IMap<string, double> this114 = global::Main.elapsedTimes;
+					double v14 = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this114) ))) ).@set("15", v14);
+				}
+				
+				elapsedTime = global::Sys.time();
+				global::System.Console.WriteLine(((object) ("") ));
+				break;
+			}
+			
+			
 			default:
 			{
 				return false;
@@ -162,7 +298,12 @@ public class Main : global::haxe.lang.HxObject {
 			
 		}
 		
-		global::Main.elapsedTime = ( global::Sys.time() - global::Main.elapsedTime );
+		{
+			global::haxe.IMap<string, double> this115 = global::Main.elapsedTimes;
+			double v15 = ( global::Sys.time() - elapsedTime );
+			((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this115) ))) ).@set(day, v15);
+		}
+		
 		return true;
 	}
 	
