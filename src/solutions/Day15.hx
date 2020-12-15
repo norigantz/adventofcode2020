@@ -1,7 +1,6 @@
 package solutions;
 
 class Day15 {
-    // static var input:String = sys.io.File.getContent('E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day15.txt');
     static var input:Array<Int> = [0,3,1,6,7,5];
     static var inputEx1:Array<Int> = [0,3,6];
 
@@ -9,28 +8,33 @@ class Day15 {
         Sys.println("Solving Day15");
         var arr:Array<Int> = input;
 
-        var numPlaces:Map<Int, Int> = new Map<Int, Int>();
+        Sys.println('a: ' + runGameFast(arr, 2020));
+        Sys.println('b: ' + runGameFast(arr, 30000000));
+    }
+
+    static function runGameFast(arr:Array<Int>, loops:Int):Int {
+        var numAges:Array<Null<Int>> = new Array<Null<Int>>();
+        numAges.resize(loops);
         var numCount = 0;
         var lastNumber = arr[0];
-        while (numCount < 2020-1) {
-            Sys.println(lastNumber);
+        while (numCount < loops-1) {
             if (numCount < arr.length) {
-                numPlaces[lastNumber] = numCount;
+                numAges[lastNumber] = numCount;
                 numCount++;
                 lastNumber = arr[numCount];
             }
-            else if (numPlaces[lastNumber] == null) {
-                numPlaces[lastNumber] = numCount;
+            else if (numAges[lastNumber] == null) {
+                numAges[lastNumber] = numCount;
                 numCount++;
                 lastNumber = 0;
             }
             else {
-                var diff = numCount - numPlaces[lastNumber];
-                numPlaces[lastNumber] = numCount;
+                var diff = numCount - numAges[lastNumber];
+                numAges[lastNumber] = numCount;
                 numCount++;
                 lastNumber = diff;
             }
         }
-        Sys.println('a: ' + lastNumber);
+        return lastNumber;
     }
 }

@@ -33,31 +33,39 @@ namespace solutions {
 			unchecked {
 				global::System.Console.WriteLine(((object) ("Solving Day15") ));
 				global::Array<int> arr = global::solutions.Day15.input;
-				global::haxe.ds.IntMap<int> numPlaces = new global::haxe.ds.IntMap<int>();
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", global::haxe.lang.Runtime.toString(global::solutions.Day15.runGameFast(arr, 2020)))) ));
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("b: ", global::haxe.lang.Runtime.toString(global::solutions.Day15.runGameFast(arr, 30000000)))) ));
+			}
+		}
+		
+		
+		public static int runGameFast(global::Array<int> arr, int loops) {
+			unchecked {
+				global::Array<object> numAges = new global::Array<object>();
+				numAges.resize(loops);
 				int numCount = 0;
 				int lastNumber = arr[0];
-				while (( numCount < 2019 )) {
-					global::System.Console.WriteLine(((object) (lastNumber) ));
+				while (( numCount < ( loops - 1 ) )) {
 					if (( numCount < arr.length )) {
-						numPlaces.@set(lastNumber, numCount);
+						numAges[lastNumber] = ((object) (numCount) );
 						 ++ numCount;
 						lastNumber = arr[numCount];
 					}
-					else if ( ! (numPlaces.@get(lastNumber).hasValue) ) {
-						numPlaces.@set(lastNumber, numCount);
+					else if ( ! (global::haxe.lang.Null<object>.ofDynamic<int>(numAges[lastNumber]).hasValue) ) {
+						numAges[lastNumber] = ((object) (numCount) );
 						 ++ numCount;
 						lastNumber = 0;
 					}
 					else {
-						int diff = ( numCount - (numPlaces.@get(lastNumber)).@value );
-						numPlaces.@set(lastNumber, numCount);
+						int diff = ( numCount - (global::haxe.lang.Null<object>.ofDynamic<int>(numAges[lastNumber])).@value );
+						numAges[lastNumber] = ((object) (numCount) );
 						 ++ numCount;
 						lastNumber = diff;
 					}
 					
 				}
 				
-				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", global::haxe.lang.Runtime.toString(lastNumber))) ));
+				return lastNumber;
 			}
 		}
 		
