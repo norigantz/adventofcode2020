@@ -212,6 +212,8 @@ C haxe.io.Eof
 M System.UnhandledExceptionEventArgs
 M cs.system.reflection.PortableExecutableKinds
 M System.Reflection.Emit.StringToken
+M solutions.Day16
+C solutions.Day16
 M System.Security.AccessControl.AccessRule
 M System.Reflection.ParameterInfo
 M haxe.ds.ReadOnlyArray

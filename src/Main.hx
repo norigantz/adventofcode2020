@@ -35,6 +35,7 @@ class Main {
             case "13": Day13.solve();
             case "14": Day14.solve();
             case "15": Day15.solve();
+            case "16": Day16.solve();
             case "all":
                 elapsedTime = Sys.time();
                 Day1.solve();
@@ -81,6 +82,9 @@ class Main {
                 elapsedTime = Sys.time();
                 Day15.solve();
                 elapsedTimes["15"] = (Sys.time() - elapsedTime);
+                elapsedTime = Sys.time();
+                Day16.solve();
+                elapsedTimes["16"] = (Sys.time() - elapsedTime);
                 elapsedTime = Sys.time();
                 Sys.println('');
                 

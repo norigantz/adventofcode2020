@@ -21,6 +21,7 @@ src\solutions\Day10.cs
 src\Sys.cs
 src\haxe\Exception.cs
 src\haxe\io\Eof.cs
+src\solutions\Day16.cs
 src\solutions\Day2.cs
 src\Type.cs
 src\haxe\io\Error.cs

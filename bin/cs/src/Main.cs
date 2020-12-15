@@ -107,6 +107,13 @@ public class Main : global::haxe.lang.HxObject {
 			}
 			
 			
+			case "16":
+			{
+				global::solutions.Day16.solve();
+				break;
+			}
+			
+			
 			case "2":
 			{
 				global::solutions.Day2.solve();
@@ -286,6 +293,14 @@ public class Main : global::haxe.lang.HxObject {
 				}
 				
 				elapsedTime = global::Sys.time();
+				global::solutions.Day16.solve();
+				{
+					global::haxe.IMap<string, double> this115 = global::Main.elapsedTimes;
+					double v15 = ( global::Sys.time() - elapsedTime );
+					((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this115) ))) ).@set("16", v15);
+				}
+				
+				elapsedTime = global::Sys.time();
 				global::System.Console.WriteLine(((object) ("") ));
 				break;
 			}
@@ -299,9 +314,9 @@ public class Main : global::haxe.lang.HxObject {
 		}
 		
 		{
-			global::haxe.IMap<string, double> this115 = global::Main.elapsedTimes;
-			double v15 = ( global::Sys.time() - elapsedTime );
-			((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this115) ))) ).@set(day, v15);
+			global::haxe.IMap<string, double> this116 = global::Main.elapsedTimes;
+			double v16 = ( global::Sys.time() - elapsedTime );
+			((global::haxe.ds.StringMap<double>) (global::haxe.ds.StringMap<object>.__hx_cast<double>(((global::haxe.ds.StringMap) (this116) ))) ).@set(day, v16);
 		}
 		
 		return true;

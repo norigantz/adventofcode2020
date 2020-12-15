@@ -83,6 +83,8 @@
 	
     <Compile Include="src\haxe\io\Eof.cs"/>
 	
+    <Compile Include="src\solutions\Day16.cs"/>
+	
     <Compile Include="src\solutions\Day2.cs"/>
 	
     <Compile Include="src\Type.cs"/>
