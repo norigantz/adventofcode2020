@@ -6,6 +6,7 @@ namespace solutions {
 		
 		static Day16() {
 			global::solutions.Day16.input = global::sys.io.File.getContent("E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day16.txt");
+			global::solutions.Day16.nearbyTickets = new global::Array<object>();
 		}
 		
 		
@@ -24,9 +25,299 @@ namespace solutions {
 		
 		public static string input;
 		
+		public static global::Array<object> nearbyTickets;
+		
 		public static void solve() {
-			global::System.Console.WriteLine(((object) ("Solving Day16") ));
-			global::Array<string> arr = global::haxe.lang.StringExt.split(global::solutions.Day16.input, "\r\n");
+			unchecked {
+				global::System.Console.WriteLine(((object) ("Solving Day16") ));
+				global::Array<string> fieldRulesStr = global::haxe.lang.StringExt.split(global::haxe.lang.StringExt.split(global::solutions.Day16.input, "your ticket:")[0], "\r\n");
+				fieldRulesStr.@remove("");
+				fieldRulesStr.@remove("");
+				global::haxe.ds.StringMap<object> fieldRules = new global::haxe.ds.StringMap<object>();
+				{
+					int _g = 0;
+					while (( _g < fieldRulesStr.length )) {
+						string line = fieldRulesStr[_g];
+						 ++ _g;
+						global::Array<string> lineArr = global::haxe.lang.StringExt.split(line, ":");
+						string fieldName = lineArr[0];
+						global::Array<string> rulesArr = global::haxe.lang.StringExt.split(lineArr[1], "or");
+						global::Array<string> lowRangeStr = global::haxe.lang.StringExt.split(rulesArr[0], "-");
+						lowRangeStr[0] = lowRangeStr[0].Trim();
+						lowRangeStr[1] = lowRangeStr[1].Trim();
+						global::haxe.lang.Function f = ((global::haxe.lang.Function) (new global::haxe.lang.Closure(typeof(global::Std), "parseInt", 1450317436)) );
+						global::Array<object> ret = new global::Array<object>(((object[]) (new object[lowRangeStr.length]) ));
+						{
+							int _g1 = 0;
+							int _g11 = lowRangeStr.length;
+							while (( _g1 < _g11 )) {
+								int i = _g1++;
+								{
+									global::haxe.lang.Null<int> val = global::haxe.lang.Null<object>.ofDynamic<int>(f.__hx_invoke1_o(default(double), ((string) (lowRangeStr.__a[i]) )));
+									ret.__a[i] = (val).toDynamic();
+								}
+								
+							}
+							
+						}
+						
+						global::Array<object> lowRange = ret;
+						global::Array<string> _this = global::haxe.lang.StringExt.split(rulesArr[1], "-");
+						global::haxe.lang.Function f1 = ((global::haxe.lang.Function) (new global::haxe.lang.Closure(typeof(global::Std), "parseInt", 1450317436)) );
+						global::Array<object> ret1 = new global::Array<object>(((object[]) (new object[_this.length]) ));
+						{
+							int _g2 = 0;
+							int _g12 = _this.length;
+							while (( _g2 < _g12 )) {
+								int i1 = _g2++;
+								{
+									global::haxe.lang.Null<int> val1 = global::haxe.lang.Null<object>.ofDynamic<int>(f1.__hx_invoke1_o(default(double), ((string) (_this.__a[i1]) )));
+									ret1.__a[i1] = (val1).toDynamic();
+								}
+								
+							}
+							
+						}
+						
+						global::Array<object> highRange = ret1;
+						{
+							global::Array<int> v = ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) (lowRange.concat(highRange)) ))) );
+							fieldRules.@set(fieldName, v);
+						}
+						
+					}
+					
+				}
+				
+				global::Array<string> nearbyTicketsStr = global::haxe.lang.StringExt.split(global::haxe.lang.StringExt.split(global::solutions.Day16.input, "nearby tickets:")[1], "\r\n");
+				nearbyTicketsStr.@remove("");
+				{
+					int _g3 = 0;
+					while (( _g3 < nearbyTicketsStr.length )) {
+						string ticket = nearbyTicketsStr[_g3];
+						 ++ _g3;
+						global::Array<object> tmp = global::solutions.Day16.nearbyTickets;
+						global::Array<string> _this1 = global::haxe.lang.StringExt.split(ticket, ",");
+						global::haxe.lang.Function f2 = ((global::haxe.lang.Function) (new global::haxe.lang.Closure(typeof(global::Std), "parseInt", 1450317436)) );
+						global::Array<object> ret2 = new global::Array<object>(((object[]) (new object[_this1.length]) ));
+						{
+							int _g4 = 0;
+							int _g13 = _this1.length;
+							while (( _g4 < _g13 )) {
+								int i2 = _g4++;
+								{
+									global::haxe.lang.Null<int> val2 = global::haxe.lang.Null<object>.ofDynamic<int>(f2.__hx_invoke1_o(default(double), ((string) (_this1.__a[i2]) )));
+									ret2.__a[i2] = (val2).toDynamic();
+								}
+								
+							}
+							
+						}
+						
+						tmp.push(ret2);
+					}
+					
+				}
+				
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", global::haxe.lang.Runtime.toString(global::solutions.Day16.calcTicketScanErrorRate(fieldRules, global::solutions.Day16.nearbyTickets)))) ));
+				global::Array<string> orderedFields = global::solutions.Day16.determineFieldOrder(fieldRules, global::solutions.Day16.nearbyTickets);
+				long resultB = ((long) (1) );
+				global::Array<string> _this2 = global::haxe.lang.StringExt.split(global::haxe.lang.StringExt.split(global::haxe.lang.StringExt.split(global::solutions.Day16.input, "your ticket:")[1], "\r\n")[1], ",");
+				global::haxe.lang.Function f3 = ((global::haxe.lang.Function) (new global::haxe.lang.Closure(typeof(global::Std), "parseInt", 1450317436)) );
+				global::Array<object> ret3 = new global::Array<object>(((object[]) (new object[_this2.length]) ));
+				{
+					int _g5 = 0;
+					int _g14 = _this2.length;
+					while (( _g5 < _g14 )) {
+						int i3 = _g5++;
+						{
+							global::haxe.lang.Null<int> val3 = global::haxe.lang.Null<object>.ofDynamic<int>(f3.__hx_invoke1_o(default(double), ((string) (_this2.__a[i3]) )));
+							ret3.__a[i3] = (val3).toDynamic();
+						}
+						
+					}
+					
+				}
+				
+				global::Array<object> myTicket = ret3;
+				{
+					int _g6 = 0;
+					int _g7 = myTicket.length;
+					while (( _g6 < _g7 )) {
+						int i4 = _g6++;
+						if (( global::haxe.lang.StringExt.indexOf(orderedFields[i4], "departure", default(global::haxe.lang.Null<int>)) == 0 )) {
+							resultB = ((long) (( ((long) (resultB) ) * ((long) (((int) (global::haxe.lang.Runtime.toInt(myTicket[i4])) )) ) )) );
+						}
+						
+					}
+					
+				}
+				
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("b: ", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (resultB) )))))) ));
+			}
+		}
+		
+		
+		public static global::Array<string> determineFieldOrder(global::haxe.ds.StringMap<object> fieldRules, global::Array<object> tickets) {
+			unchecked {
+				global::Array<string> orderedFields = new global::Array<string>(new string[]{});
+				global::Array<string> allFields = new global::Array<string>();
+				{
+					object key = ((object) (new global::haxe.ds._StringMap.StringMapKeyIterator<object>(((global::haxe.ds.StringMap<object>) (fieldRules) ))) );
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(key, "hasNext", 407283053, null))) {
+						string key1 = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(key, "next", 1224901875, null));
+						allFields.push(key1);
+					}
+					
+				}
+				
+				global::Array<object> currValidFields = new global::Array<object>();
+				{
+					int _g = 0;
+					int _g1 = allFields.length;
+					while (( _g < _g1 )) {
+						int i = _g++;
+						currValidFields.push(allFields.copy());
+					}
+					
+				}
+				
+				global::Array<int> unsolvedRows = new global::Array<int>();
+				while (( unsolvedRows.length < currValidFields.length )) {
+					{
+						int _g2 = 0;
+						int _g3 = tickets.length;
+						while (( _g2 < _g3 )) {
+							int t = _g2++;
+							{
+								int _g4 = 0;
+								int _g5 = ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) (tickets[t]) ))) ).length;
+								while (( _g4 < _g5 )) {
+									int i1 = _g4++;
+									{
+										int _g6 = 0;
+										global::Array<string> _g7 = ((global::Array<string>) (global::Array<object>.__hx_cast<string>(((global::Array) (currValidFields[i1]) ))) );
+										while (( _g6 < _g7.length )) {
+											string field = _g7[_g6];
+											 ++ _g6;
+											if (( ( ( ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) (tickets[t]) ))) )[i1] < ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) ((fieldRules.@get(field)).@value) ))) )[0] ) || ( ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) (tickets[t]) ))) )[i1] > ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) ((fieldRules.@get(field)).@value) ))) )[3] ) ) || ( ( ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) (tickets[t]) ))) )[i1] > ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) ((fieldRules.@get(field)).@value) ))) )[1] ) && ( ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) (tickets[t]) ))) )[i1] < ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) ((fieldRules.@get(field)).@value) ))) )[2] ) ) )) {
+												((global::Array<string>) (global::Array<object>.__hx_cast<string>(((global::Array) (currValidFields[i1]) ))) ).@remove(field);
+											}
+											
+										}
+										
+									}
+									
+								}
+								
+							}
+							
+						}
+						
+					}
+					
+					{
+						int _g8 = 0;
+						int _g9 = currValidFields.length;
+						while (( _g8 < _g9 )) {
+							int i2 = _g8++;
+							if ((  ! (unsolvedRows.contains(i2))  && ( ((global::Array<string>) (global::Array<object>.__hx_cast<string>(((global::Array) (currValidFields[i2]) ))) ).length == 1 ) )) {
+								unsolvedRows.push(i2);
+								{
+									int _g10 = 0;
+									int _g11 = currValidFields.length;
+									while (( _g10 < _g11 )) {
+										int j = _g10++;
+										if (( i2 != j )) {
+											((global::Array<string>) (global::Array<object>.__hx_cast<string>(((global::Array) (currValidFields[j]) ))) ).@remove(((global::Array<string>) (global::Array<object>.__hx_cast<string>(((global::Array) (currValidFields[i2]) ))) )[0]);
+										}
+										
+									}
+									
+								}
+								
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+				{
+					int _g12 = 0;
+					while (( _g12 < currValidFields.length )) {
+						global::Array<string> row = ((global::Array<string>) (global::Array<object>.__hx_cast<string>(((global::Array) (currValidFields[_g12]) ))) );
+						 ++ _g12;
+						orderedFields.push(row[0]);
+					}
+					
+				}
+				
+				return orderedFields;
+			}
+		}
+		
+		
+		public static int calcTicketScanErrorRate(global::haxe.ds.StringMap<object> fieldRules, global::Array<object> tickets) {
+			unchecked {
+				int errorSum = 0;
+				global::Array<int> badTickets = new global::Array<int>();
+				{
+					int _g = 0;
+					int _g1 = tickets.length;
+					while (( _g < _g1 )) {
+						int i = _g++;
+						{
+							int _g2 = 0;
+							global::Array<int> _g3 = ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) (tickets[i]) ))) );
+							while (( _g2 < _g3.length )) {
+								int @value = _g3[_g2];
+								 ++ _g2;
+								bool isValid = false;
+								{
+									object field = ((object) (new global::haxe.ds._StringMap.StringMapKeyIterator<object>(((global::haxe.ds.StringMap<object>) (fieldRules) ))) );
+									while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(field, "hasNext", 407283053, null))) {
+										string field1 = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(field, "next", 1224901875, null));
+										if (( ( ( @value >= ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) ((fieldRules.@get(field1)).@value) ))) )[0] ) && ( @value <= ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) ((fieldRules.@get(field1)).@value) ))) )[1] ) ) || ( ( @value >= ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) ((fieldRules.@get(field1)).@value) ))) )[2] ) && ( @value <= ((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) ((fieldRules.@get(field1)).@value) ))) )[3] ) ) )) {
+											isValid = true;
+											break;
+										}
+										
+									}
+									
+								}
+								
+								if ( ! (isValid) ) {
+									errorSum += @value;
+									badTickets.push(i);
+								}
+								
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+				global::Array<object> validTickets = new global::Array<object>();
+				{
+					int _g4 = 0;
+					int _g5 = global::solutions.Day16.nearbyTickets.length;
+					while (( _g4 < _g5 )) {
+						int i1 = _g4++;
+						if ( ! (badTickets.contains(i1)) ) {
+							validTickets.push(((global::Array<int>) (global::Array<object>.__hx_cast<int>(((global::Array) (global::solutions.Day16.nearbyTickets[i1]) ))) ));
+						}
+						
+					}
+					
+				}
+				
+				global::solutions.Day16.nearbyTickets = validTickets;
+				return errorSum;
+			}
 		}
 		
 		

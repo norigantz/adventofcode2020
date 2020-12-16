@@ -87,7 +87,6 @@ class Main {
                 elapsedTimes["16"] = (Sys.time() - elapsedTime);
                 elapsedTime = Sys.time();
                 Sys.println('');
-                
             default: return false;
         }
         elapsedTimes[day] = Sys.time() - elapsedTime;
