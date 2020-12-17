@@ -49,8 +49,8 @@ namespace solutions {
 						global::Array<object> ret = new global::Array<object>(((object[]) (new object[lowRangeStr.length]) ));
 						{
 							int _g1 = 0;
-							int _g11 = lowRangeStr.length;
-							while (( _g1 < _g11 )) {
+							int _g2 = lowRangeStr.length;
+							while (( _g1 < _g2 )) {
 								int i = _g1++;
 								{
 									global::haxe.lang.Null<int> val = global::haxe.lang.Null<object>.ofDynamic<int>(f.__hx_invoke1_o(default(double), ((string) (lowRangeStr.__a[i]) )));
@@ -66,10 +66,10 @@ namespace solutions {
 						global::haxe.lang.Function f1 = ((global::haxe.lang.Function) (new global::haxe.lang.Closure(typeof(global::Std), "parseInt", 1450317436)) );
 						global::Array<object> ret1 = new global::Array<object>(((object[]) (new object[_this.length]) ));
 						{
-							int _g2 = 0;
-							int _g12 = _this.length;
-							while (( _g2 < _g12 )) {
-								int i1 = _g2++;
+							int _g3 = 0;
+							int _g4 = _this.length;
+							while (( _g3 < _g4 )) {
+								int i1 = _g3++;
 								{
 									global::haxe.lang.Null<int> val1 = global::haxe.lang.Null<object>.ofDynamic<int>(f1.__hx_invoke1_o(default(double), ((string) (_this.__a[i1]) )));
 									ret1.__a[i1] = (val1).toDynamic();
@@ -92,19 +92,19 @@ namespace solutions {
 				global::Array<string> nearbyTicketsStr = global::haxe.lang.StringExt.split(global::haxe.lang.StringExt.split(global::solutions.Day16.input, "nearby tickets:")[1], "\r\n");
 				nearbyTicketsStr.@remove("");
 				{
-					int _g3 = 0;
-					while (( _g3 < nearbyTicketsStr.length )) {
-						string ticket = nearbyTicketsStr[_g3];
-						 ++ _g3;
+					int _g5 = 0;
+					while (( _g5 < nearbyTicketsStr.length )) {
+						string ticket = nearbyTicketsStr[_g5];
+						 ++ _g5;
 						global::Array<object> tmp = global::solutions.Day16.nearbyTickets;
 						global::Array<string> _this1 = global::haxe.lang.StringExt.split(ticket, ",");
 						global::haxe.lang.Function f2 = ((global::haxe.lang.Function) (new global::haxe.lang.Closure(typeof(global::Std), "parseInt", 1450317436)) );
 						global::Array<object> ret2 = new global::Array<object>(((object[]) (new object[_this1.length]) ));
 						{
-							int _g4 = 0;
-							int _g13 = _this1.length;
-							while (( _g4 < _g13 )) {
-								int i2 = _g4++;
+							int _g6 = 0;
+							int _g7 = _this1.length;
+							while (( _g6 < _g7 )) {
+								int i2 = _g6++;
 								{
 									global::haxe.lang.Null<int> val2 = global::haxe.lang.Null<object>.ofDynamic<int>(f2.__hx_invoke1_o(default(double), ((string) (_this1.__a[i2]) )));
 									ret2.__a[i2] = (val2).toDynamic();
@@ -126,10 +126,10 @@ namespace solutions {
 				global::haxe.lang.Function f3 = ((global::haxe.lang.Function) (new global::haxe.lang.Closure(typeof(global::Std), "parseInt", 1450317436)) );
 				global::Array<object> ret3 = new global::Array<object>(((object[]) (new object[_this2.length]) ));
 				{
-					int _g5 = 0;
-					int _g14 = _this2.length;
-					while (( _g5 < _g14 )) {
-						int i3 = _g5++;
+					int _g8 = 0;
+					int _g9 = _this2.length;
+					while (( _g8 < _g9 )) {
+						int i3 = _g8++;
 						{
 							global::haxe.lang.Null<int> val3 = global::haxe.lang.Null<object>.ofDynamic<int>(f3.__hx_invoke1_o(default(double), ((string) (_this2.__a[i3]) )));
 							ret3.__a[i3] = (val3).toDynamic();
@@ -141,10 +141,10 @@ namespace solutions {
 				
 				global::Array<object> myTicket = ret3;
 				{
-					int _g6 = 0;
-					int _g7 = myTicket.length;
-					while (( _g6 < _g7 )) {
-						int i4 = _g6++;
+					int _g10 = 0;
+					int _g11 = myTicket.length;
+					while (( _g10 < _g11 )) {
+						int i4 = _g10++;
 						if (( global::haxe.lang.StringExt.indexOf(orderedFields[i4], "departure", default(global::haxe.lang.Null<int>)) == 0 )) {
 							resultB = ((long) (( ((long) (resultB) ) * ((long) (((int) (global::haxe.lang.Runtime.toInt(myTicket[i4])) )) ) )) );
 						}
