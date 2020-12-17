@@ -231,6 +231,8 @@ M Type
 C Type
 M System.AssemblyLoadEventArgs
 M System.Globalization.DateTimeFormatInfo
+M solutions.Day17
+C solutions.Day17
 M haxe.ds.HashMap
 M cs.system.reflection.MethodAttributes
 M System.Text.RegularExpressions.Capture

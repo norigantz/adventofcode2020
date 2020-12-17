@@ -89,6 +89,8 @@
 	
     <Compile Include="src\Type.cs"/>
 	
+    <Compile Include="src\solutions\Day17.cs"/>
+	
     <Compile Include="src\haxe\io\Error.cs"/>
 	
     <Compile Include="src\solutions\Day12.cs"/>
