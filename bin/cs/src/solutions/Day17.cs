@@ -175,7 +175,7 @@ namespace solutions {
 				}
 				
 				global::Array<string> newGrid = new global::Array<string>();
-				newGrid.resize(( ( ( axes[0] * axes[1] ) * axes[2] ) * axes[3] ));
+				newGrid.resize(( ( ( global::solutions.Day17.width * global::solutions.Day17.height ) * global::solutions.Day17.length ) * global::solutions.Day17.trength ));
 				{
 					int _g2 = 0;
 					int _g3 = global::solutions.Day17.trength;

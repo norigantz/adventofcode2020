@@ -79,7 +79,7 @@ class Day17 {
             growShift[i]++;
         }
         var newGrid = new Array<String>();
-        newGrid.resize(axes[0]*axes[1]*axes[2]*axes[3]);
+        newGrid.resize(width*height*length*trength);
         for (w in 0...trength)
             for (z in 0...length)
                 for (y in 0...height)
