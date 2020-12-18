@@ -65,15 +65,11 @@ class Day17 {
         var newTrength = trength + 2;
         var newGrid = new Array<String>();
         newGrid.resize(newWidth*newHeight*newLength*newTrength);
-        for (w in 0...trength) {
-            for (z in 0...length) {
-                for (y in 0...height) {
-                    for (x in 0...width) {
+        for (w in 0...trength)
+            for (z in 0...length)
+                for (y in 0...height)
+                    for (x in 0...width)
                         newGrid[growIndex(x+1, y+1, z+1, w+1)] = grid[index(x, y, z, w)];
-                    }
-                }
-            }                
-        }
         width = newWidth;
         height = newHeight;
         length = newLength;
@@ -92,16 +88,12 @@ class Day17 {
     }
 
     static function checkNeighbor(x:Int, y:Int, z:Int, w:Int, dX:Int, dY:Int, dZ:Int, dW:Int):Bool {
-        var activeCubeNeighbor = false;
         var currX = x+dX;
         var currY = y+dY;
         var currZ = z+dZ;
         var currW = w+dW;
-        if (currX > -1 && currX < width && currY > -1 && currY < height && currZ > -1 && currZ < length && currW > -1 && currW < trength) {
-            if (grid[index(currX, currY, currZ, currW)] == '#') return true;
-            else if (grid[index(currX, currY, currZ, currW)] == '.' || grid[index(currX, currY, currZ, currW)] == null) return false;
-        }
-        return activeCubeNeighbor;
+        if (currX > -1 && currX < width && currY > -1 && currY < height && currZ > -1 && currZ < length && currW > -1 && currW < trength && grid[index(currX, currY, currZ, currW)] == '#') return true;
+        else return false;
     }
 
     static function growIndex(x:Int, y:Int, z:Int, w:Int):Int {

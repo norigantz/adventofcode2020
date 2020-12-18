@@ -645,22 +645,17 @@ namespace solutions {
 		
 		public static bool checkNeighbor(int x, int y, int z, int w, int dX, int dY, int dZ, int dW) {
 			unchecked {
-				bool activeCubeNeighbor = false;
 				int currX = ( x + dX );
 				int currY = ( y + dY );
 				int currZ = ( z + dZ );
 				int currW = ( w + dW );
-				if (( ( ( ( ( ( ( ( currX > -1 ) && ( currX < global::solutions.Day17.width ) ) && ( currY > -1 ) ) && ( currY < global::solutions.Day17.height ) ) && ( currZ > -1 ) ) && ( currZ < global::solutions.Day17.length ) ) && ( currW > -1 ) ) && ( currW < global::solutions.Day17.trength ) )) {
-					if (( global::solutions.Day17.grid[global::solutions.Day17.index(currX, currY, currZ, currW)] == "#" )) {
-						return true;
-					}
-					else if (( ( global::solutions.Day17.grid[global::solutions.Day17.index(currX, currY, currZ, currW)] == "." ) || ( global::solutions.Day17.grid[global::solutions.Day17.index(currX, currY, currZ, currW)] == null ) )) {
-						return false;
-					}
-					
+				if (( ( ( ( ( ( ( ( ( currX > -1 ) && ( currX < global::solutions.Day17.width ) ) && ( currY > -1 ) ) && ( currY < global::solutions.Day17.height ) ) && ( currZ > -1 ) ) && ( currZ < global::solutions.Day17.length ) ) && ( currW > -1 ) ) && ( currW < global::solutions.Day17.trength ) ) && ( global::solutions.Day17.grid[global::solutions.Day17.index(currX, currY, currZ, currW)] == "#" ) )) {
+					return true;
+				}
+				else {
+					return false;
 				}
 				
-				return activeCubeNeighbor;
 			}
 		}
 		
