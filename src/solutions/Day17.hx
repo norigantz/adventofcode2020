@@ -3,17 +3,13 @@ package solutions;
 class Day17 {
     static var input:String = sys.io.File.getContent('E:/Mila/Documents/GitHub/adventofcode2020/src/inputs/Day17.txt');
 
-    // static var cubeGrid:Map<Int, Array<String>> = new Map<Int, Array<String>>();
-    // static var depth = 0;
-    // static var hyperDepth = 0;
-
     static var activeCubes = 0;
 
     static var grid:Array<String> = new Array<String>();
-    static var width:Int; //x
-    static var height:Int; //y
-    static var length:Int; //z
-    static var trength:Int; //w
+    static var width:Int;
+    static var height:Int;
+    static var length:Int;
+    static var trength:Int;
 
     public static function solve() {
         Sys.println("Solving Day17");
@@ -33,65 +29,36 @@ class Day17 {
             }
         }
 
-        // drawGridSlice(0);
-        // Sys.println(getNeighbors(1, 1, 0, 0));
-
-        // drawFullGrid();
-        // growGrid();
-        // drawFullGrid();
-
         for (i in 0...6)
-            iterateCubes(1);
+            iterateCubes();
         Sys.println('a: ' + activeCubes);
     }
 
-    static function iterateCubes(distanceToNeighbors:Int) {
+    static function iterateCubes() {
         growGrid();
-        var newGrid = grid.copy();//copyGrid(cubeGrid);
-        // var cubesChanged = 0;
+        var newGrid = grid.copy();
         var activeNeighbors:Int;
-        // var w = 0;
         for (w in 0...trength) {
-            for (z in 0...length) {//-depth...depth+1) {
-                for (y in 0...height) {//0...cubeGrid[z].length) {
-                    for (x in 0...width) {//0...cubeGrid[z][0].length) {
+            for (z in 0...length) {
+                for (y in 0...height) {
+                    for (x in 0...width) {
                         activeNeighbors = getNeighbors(x, y, z, w);
                         if ((grid[index(x, y, z, w)] == '.' || grid[index(x, y, z, w)] == null) && activeNeighbors == 3) {
-                            newGrid[index(x, y, z, w)] = '#';//newCubeGrid[z][row].substr(0, col) + '#' + newCubeGrid[z][row].substr(col+1);
-                            // cubesChanged++;
+                            newGrid[index(x, y, z, w)] = '#';
                             activeCubes++;
                         }
                         else if (grid[index(x, y, z, w)] == '#' && (activeNeighbors < 2 || activeNeighbors > 3)) {
-                            newGrid[index(x, y, z, w)] = '.';//newGrid[z][row].substr(0, col) + '.' + newGrid[z][row].substr(col+1);
-                            // cubesChanged++;
+                            newGrid[index(x, y, z, w)] = '.';
                             activeCubes--;
                         }
                     }
                 }
             }
         }
-        grid = newGrid.copy();//copyGrid(newCubeGrid);
-        // drawFullGrid();
-        // return cubesChanged;
+        grid = newGrid.copy();
     }
 
     static function growGrid() {
-        // var str:String = "";
-        // for (s in 0...cubeGrid[0][0].length+2)
-        //     str += '.';
-        // for (z in -depth...depth+1) {
-        //     for (i in 0...cubeGrid[z].length)
-        //         cubeGrid[z][i] = '.' + cubeGrid[z][i] + '.';
-        //     cubeGrid[z].unshift(str);
-        //     cubeGrid[z].push(str);
-        // }
-        // depth++;
-        // cubeGrid[-depth] = new Array<String>();
-        // cubeGrid[depth] = new Array<String>();
-        // for (s in 0...cubeGrid[0].length) {
-        //     cubeGrid[-depth].push(str);
-        //     cubeGrid[depth].push(str);
-        // }
         var newWidth = width + 2;
         var newHeight = height + 2;
         var newLength = length + 2;
@@ -102,8 +69,6 @@ class Day17 {
             for (z in 0...length) {
                 for (y in 0...height) {
                     for (x in 0...width) {
-                        // if(grid[index(x, y, z, w)] != null) Sys.println(grid[index(x, y, z, w)]);
-                        // Sys.println(index(x, y, z, w) + ', ' + grid.length);
                         newGrid[growIndex(x+1, y+1, z+1, w+1)] = grid[index(x, y, z, w)];
                     }
                 }
@@ -146,13 +111,6 @@ class Day17 {
     static function index(x:Int, y:Int, z:Int, w:Int):Int {
         return (width*height*length*w + width*height*z + width*y + x);
     }
-
-    // static function copyGrid(grid:Map<Int, Array<String>>):Map<Int, Array<String>> {
-    //     var newGrid = new Map<Int, Array<String>>();
-    //     for (key in grid.keys())
-    //         newGrid[key] = grid[key].copy();
-    //     return newGrid;
-    // }
 
     static function drawFullGrid() {
         for (z in 0...length)

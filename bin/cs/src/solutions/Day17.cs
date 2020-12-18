@@ -72,12 +72,12 @@ namespace solutions {
 				}
 				
 				{
-					global::solutions.Day17.iterateCubes(1);
-					global::solutions.Day17.iterateCubes(1);
-					global::solutions.Day17.iterateCubes(1);
-					global::solutions.Day17.iterateCubes(1);
-					global::solutions.Day17.iterateCubes(1);
-					global::solutions.Day17.iterateCubes(1);
+					global::solutions.Day17.iterateCubes();
+					global::solutions.Day17.iterateCubes();
+					global::solutions.Day17.iterateCubes();
+					global::solutions.Day17.iterateCubes();
+					global::solutions.Day17.iterateCubes();
+					global::solutions.Day17.iterateCubes();
 				}
 				
 				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", global::haxe.lang.Runtime.toString(global::solutions.Day17.activeCubes))) ));
@@ -85,7 +85,7 @@ namespace solutions {
 		}
 		
 		
-		public static void iterateCubes(int distanceToNeighbors) {
+		public static void iterateCubes() {
 			unchecked {
 				global::solutions.Day17.growGrid();
 				global::Array<string> newGrid = global::solutions.Day17.grid.copy();
