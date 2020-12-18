@@ -28,6 +28,7 @@ src\solutions\Day17.cs
 src\haxe\io\Error.cs
 src\solutions\Day12.cs
 src\solutions\Day6.cs
+src\StringTools.cs
 src\haxe\Int64.cs
 src\haxe\iterators\ArrayIterator.cs
 src\Reflect.cs
@@ -42,6 +43,7 @@ src\cs\internal\Runtime.cs
 src\cs\Lib.cs
 src\sys\io\FileInput.cs
 src\EReg.cs
+src\solutions\Day18.cs
 src\solutions\Day14.cs
 src\cs\internal\HxObject.cs
 src\cs\internal\FieldLookup.cs

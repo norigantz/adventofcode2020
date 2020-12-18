@@ -75,6 +75,19 @@ public sealed class EReg : global::haxe.lang.HxObject {
 	}
 	
 	
+	public string matched(int n) {
+		if (( ( this.m == null ) || ( ((uint) (n) ) > this.m.Groups.Count ) )) {
+			throw ((global::System.Exception) (global::haxe.Exception.thrown("EReg::matched")) );
+		}
+		
+		if ( ! (this.m.Groups[n].Success) ) {
+			return null;
+		}
+		
+		return ( this.m.Groups[n] as global::System.Text.RegularExpressions.Capture ).Value;
+	}
+	
+	
 	public string matchedLeft() {
 		return this.cur.Substring(((int) (0) ), ((int) (( this.m as global::System.Text.RegularExpressions.Capture ).Index) ));
 	}
@@ -162,6 +175,12 @@ public sealed class EReg : global::haxe.lang.HxObject {
 				}
 				
 				
+				case 159136996:
+				{
+					return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "matched", 159136996)) );
+				}
+				
+				
 				case 52644165:
 				{
 					return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "match", 52644165)) );
@@ -221,6 +240,12 @@ public sealed class EReg : global::haxe.lang.HxObject {
 				case 2083500811:
 				{
 					return this.matchedLeft();
+				}
+				
+				
+				case 159136996:
+				{
+					return this.matched(((int) (global::haxe.lang.Runtime.toInt(dynargs[0])) ));
 				}
 				
 				

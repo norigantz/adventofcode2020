@@ -280,6 +280,8 @@ M cs.system.threading.ThreadStart
 M solutions.Day6
 C solutions.Day6
 M System.Security.Policy.CodeGroup
+M StringTools
+C StringTools
 M cs.system.collections.ArrayList
 M System.Text.DecoderFallback
 M System.Text.RegularExpressions.Group
@@ -483,6 +485,8 @@ M EReg
 C EReg
 M System.Reflection.Emit.AssemblyBuilder
 M System.Math
+M solutions.Day18
+C solutions.Day18
 M cs.system.security.policy.PolicyStatementAttribute
 M System.Diagnostics.ProcessThreadCollection
 M System.Attribute

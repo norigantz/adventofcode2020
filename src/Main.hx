@@ -37,6 +37,7 @@ class Main {
             case "15": Day15.solve();
             case "16": Day16.solve();
             case "17": Day17.solve();
+            case "18": Day18.solve();
             case "all":
                 elapsedTime = Sys.time();
                 Day1.solve();
