@@ -34,20 +34,20 @@ namespace solutions {
 				while (( _g < _g1 )) {
 					int i = _g++;
 					global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.toString(i), ": "), arr[i])) ));
-					if (( ((long) (global::solutions.Day18.evaluate(arr[i], "")) ) < ((long) (0) ) )) {
+					if (( ((long) (global::solutions.Day18.evaluate(arr[i])) ) < ((long) (0) ) )) {
 						break;
 					}
 					
-					sum = ( ((long) (sum) ) + ((long) (global::solutions.Day18.evaluate(arr[i], "")) ) );
+					sum = ( ((long) (sum) ) + ((long) (global::solutions.Day18.evaluate(arr[i])) ) );
 				}
 				
 			}
 			
-			global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (sum) )))))) ));
+			global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("b: ", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (sum) )))))) ));
 		}
 		
 		
-		public static long evaluate(string expression, string opPreference) {
+		public static long evaluate(string expression) {
 			unchecked {
 				expression = global::StringTools.replace(expression, " ", "");
 				global::System.Console.WriteLine(((object) (expression) ));
@@ -71,7 +71,7 @@ namespace solutions {
 							 -- parens;
 							if (( parens == 0 )) {
 								global::System.Console.WriteLine(((object) (subExpression) ));
-								expression = global::StringTools.replace(expression, subExpression, global::haxe.lang.Runtime.concat("", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (global::solutions.Day18.evaluate(global::haxe.lang.StringExt.substr(subExpression, 1, new global::haxe.lang.Null<int>(( subExpression.Length - 2 ), true)), "")) ))))));
+								expression = global::StringTools.replace(expression, subExpression, global::haxe.lang.Runtime.concat("", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (global::solutions.Day18.evaluate(global::haxe.lang.StringExt.substr(subExpression, 1, new global::haxe.lang.Null<int>(( subExpression.Length - 2 ), true)))) ))))));
 								global::System.Console.WriteLine(((object) (expression) ));
 								subExpression = "";
 								break;
@@ -83,11 +83,26 @@ namespace solutions {
 					
 				}
 				
-				ereg = new global::EReg("[+*]", "");
+				ereg = new global::EReg("[+]", "");
 				string currExpression = expression;
 				long result = ((long) (0) );
 				while (ereg.match(currExpression)) {
-					long left = global::haxe._Int64.Int64_Impl_.parseString(ereg.matchedLeft());
+					long left = default(long);
+					global::EReg leftReg = new global::EReg("[+*]", "");
+					if (leftReg.match(ereg.matchedLeft())) {
+						string matchForward = ereg.matchedLeft();
+						while (leftReg.match(matchForward)) {
+							matchForward = leftReg.matchedRight();
+						}
+						
+						left = global::haxe._Int64.Int64_Impl_.parseString(leftReg.matchedRight());
+						global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("left: ", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (left) )))))) ));
+					}
+					else {
+						left = global::haxe._Int64.Int64_Impl_.parseString(ereg.matchedLeft());
+						global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("left: ", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (left) )))))) ));
+					}
+					
 					string op = ereg.matched(0);
 					long right = default(long);
 					global::EReg rightReg = new global::EReg("[+*]", "");
@@ -101,10 +116,48 @@ namespace solutions {
 					global::System.Console.WriteLine(((object) (left) ));
 					global::System.Console.WriteLine(((object) (op) ));
 					global::System.Console.WriteLine(((object) (right) ));
-					result = ( (( op == "+" )) ? (((long) (( ((long) (left) ) + ((long) (right) ) )) )) : (((long) (( ((long) (left) ) * ((long) (right) ) )) )) );
+					result = ((long) (( ((long) (left) ) + ((long) (right) ) )) );
 					global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("=", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (result) )))))) ));
 					global::System.Console.WriteLine(((object) ("") ));
-					currExpression = global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (result) ))), global::haxe.lang.StringExt.substr(currExpression, (global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (left) ))), op), (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (right) )))))).Length, default(global::haxe.lang.Null<int>)));
+					currExpression = global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat(global::haxe.lang.StringExt.substr(currExpression, 0, new global::haxe.lang.Null<int>(global::haxe.lang.StringExt.indexOf(currExpression, global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (left) ))), op), (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (right) ))))), default(global::haxe.lang.Null<int>)), true)), (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (result) ))))), global::haxe.lang.StringExt.substr(currExpression, ( global::haxe.lang.StringExt.indexOf(currExpression, global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (left) ))), op), (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (right) ))))), default(global::haxe.lang.Null<int>)) + (global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (left) ))), op), (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (right) )))))).Length ), default(global::haxe.lang.Null<int>)));
+				}
+				
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("curr: ", currExpression)) ));
+				ereg = new global::EReg("[*]", "");
+				while (ereg.match(currExpression)) {
+					long left1 = default(long);
+					global::EReg leftReg1 = new global::EReg("[*]", "");
+					if (leftReg1.match(ereg.matchedLeft())) {
+						string matchForward1 = ereg.matchedLeft();
+						while (leftReg1.match(matchForward1)) {
+							matchForward1 = leftReg1.matchedRight();
+						}
+						
+						left1 = global::haxe._Int64.Int64_Impl_.parseString(leftReg1.matchedRight());
+						global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("left: ", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (left1) )))))) ));
+					}
+					else {
+						left1 = global::haxe._Int64.Int64_Impl_.parseString(ereg.matchedLeft());
+						global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("left: ", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (left1) )))))) ));
+					}
+					
+					string op1 = ereg.matched(0);
+					long right1 = default(long);
+					global::EReg rightReg1 = new global::EReg("[+*]", "");
+					if (rightReg1.match(ereg.matchedRight())) {
+						right1 = global::haxe._Int64.Int64_Impl_.parseString(rightReg1.matchedLeft());
+					}
+					else {
+						right1 = global::haxe._Int64.Int64_Impl_.parseString(ereg.matchedRight());
+					}
+					
+					global::System.Console.WriteLine(((object) (left1) ));
+					global::System.Console.WriteLine(((object) (op1) ));
+					global::System.Console.WriteLine(((object) (right1) ));
+					result = ((long) (( ((long) (left1) ) * ((long) (right1) ) )) );
+					global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("=", (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (result) )))))) ));
+					global::System.Console.WriteLine(((object) ("") ));
+					currExpression = global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (result) ))), global::haxe.lang.StringExt.substr(currExpression, ( global::haxe.lang.StringExt.indexOf(currExpression, global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (left1) ))), op1), (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (right1) ))))), default(global::haxe.lang.Null<int>)) + (global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (left1) ))), op1), (global::haxe.lang.Runtime.concat("", global::Std.@string(((long) (right1) )))))).Length ), default(global::haxe.lang.Null<int>)));
 				}
 				
 				return result;

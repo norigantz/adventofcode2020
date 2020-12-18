@@ -13,15 +13,15 @@ class Day18 {
         var sum:Int64 = 0;
         for (i in 0...arr.length) {
             Sys.println(i + ': ' + arr[i]);
-            if (evaluate(arr[i], '') < 0)
+            if (evaluate(arr[i]) < 0)
                 break;
-            sum += evaluate(arr[i], '');
+            sum += evaluate(arr[i]);
         }
-        Sys.println('a: ' + sum);
-        // Sys.println(evaluate(arr[52]));
+        Sys.println('b: ' + sum);
+        // Sys.println(evaluate(arr[5]));
     }
 
-    static function evaluate(expression:String, opPreference:String):Int64 {
+    static function evaluate(expression:String):Int64 {
         expression = expression.replace(' ', '');
         Sys.println(expression);
 
@@ -38,7 +38,7 @@ class Day18 {
                     parens--;
                     if(parens == 0) {
                         Sys.println(subExpression);
-                        expression = expression.replace(subExpression, ''+evaluate(subExpression.substr(1, subExpression.length-2), ''));
+                        expression = expression.replace(subExpression, ''+evaluate(subExpression.substr(1, subExpression.length-2)));
                         Sys.println(expression);
                         subExpression = '';
                         break;
@@ -47,11 +47,23 @@ class Day18 {
             }
         }
         
-        ereg = ~/[+*]/;
+        ereg = ~/[+]/;
         var currExpression = expression;
         var result:Int64 = 0;
         while (ereg.match(currExpression)) {
-            var left:Int64 = Int64.parseString(ereg.matchedLeft());
+            var left:Int64;
+            var leftReg = ~/[+*]/;
+            if (leftReg.match(ereg.matchedLeft())) {
+                var matchForward = ereg.matchedLeft();
+                while (leftReg.match(matchForward))
+                    matchForward = leftReg.matchedRight();
+                left = Int64.parseString(leftReg.matchedRight());
+                Sys.println('left: '+ left);
+            }
+            else {
+                left = Int64.parseString(ereg.matchedLeft());
+                Sys.println('left: '+ left);
+            }
             var op = ereg.matched(0);
             var right:Int64;
             var rightReg = ~/[+*]/;
@@ -63,10 +75,43 @@ class Day18 {
             Sys.println(op);
             Sys.println(right);
             
-            result = op == '+' ? left + right : left * right;
+            result = left + right;
             Sys.println('='+result);
             Sys.println('');
-            currExpression = result + currExpression.substr((left + op + right).length);
+            currExpression = currExpression.substr(0, currExpression.indexOf(left+op+right)) + result + currExpression.substr(currExpression.indexOf(left+op+right)+(left+op+right).length);
+        }
+
+        Sys.println('curr: ' + currExpression);
+        ereg = ~/[*]/;
+        while (ereg.match(currExpression)) {
+            var left:Int64;
+            var leftReg = ~/[*]/;
+            if (leftReg.match(ereg.matchedLeft())) {
+                var matchForward = ereg.matchedLeft();
+                while (leftReg.match(matchForward))
+                    matchForward = leftReg.matchedRight();
+                left = Int64.parseString(leftReg.matchedRight());
+                Sys.println('left: '+ left);
+            }
+            else {
+                left = Int64.parseString(ereg.matchedLeft());
+                Sys.println('left: '+ left);
+            }
+            var op = ereg.matched(0);
+            var right:Int64;
+            var rightReg = ~/[+*]/;
+            if (rightReg.match(ereg.matchedRight()))
+                right = Int64.parseString(rightReg.matchedLeft());
+            else
+                right = Int64.parseString(ereg.matchedRight());
+            Sys.println(left);
+            Sys.println(op);
+            Sys.println(right);
+            
+            result = left * right;
+            Sys.println('='+result);
+            Sys.println('');
+            currExpression = result + currExpression.substr(currExpression.indexOf(left+op+right)+(left+op+right).length);
         }
         return result;
     }
