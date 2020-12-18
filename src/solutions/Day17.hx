@@ -28,14 +28,27 @@ class Day17 {
                 if (char == '#') activeCubes++;
             }
         }
+        var originalGrid = grid.copy();
+        var originalActiveCubes = activeCubes;
 
         for (i in 0...6)
-            iterateCubes();
+            iterateCubes(3);
         Sys.println('a: ' + activeCubes);
+
+        activeCubes = originalActiveCubes;
+        width = arr[0].length;
+        height = arr.length;
+        length = 1;
+        trength = 1;
+        grid = originalGrid.copy();
+
+        for (i in 0...6)
+            iterateCubes(4);
+        Sys.println('b: ' + activeCubes);
     }
 
-    static function iterateCubes() {
-        growGrid();
+    static function iterateCubes(dimensions:Int) {
+        growGrid(dimensions);
         var newGrid = grid.copy();
         var activeNeighbors:Int;
         for (w in 0...trength) {
@@ -58,22 +71,24 @@ class Day17 {
         grid = newGrid.copy();
     }
 
-    static function growGrid() {
-        var newWidth = width + 2;
-        var newHeight = height + 2;
-        var newLength = length + 2;
-        var newTrength = trength + 2;
+    static function growGrid(dimensions:Int) {
+        var axes = [width, height, length, trength];
+        var growShift = [0, 0, 0, 0];
+        for (i in 0...dimensions) {
+            axes[i] += 2;
+            growShift[i]++;
+        }
         var newGrid = new Array<String>();
-        newGrid.resize(newWidth*newHeight*newLength*newTrength);
+        newGrid.resize(axes[0]*axes[1]*axes[2]*axes[3]);
         for (w in 0...trength)
             for (z in 0...length)
                 for (y in 0...height)
                     for (x in 0...width)
-                        newGrid[growIndex(x+1, y+1, z+1, w+1)] = grid[index(x, y, z, w)];
-        width = newWidth;
-        height = newHeight;
-        length = newLength;
-        trength = newTrength;
+                        newGrid[growIndex(x+growShift[0], y+growShift[1], z+growShift[2], w+growShift[3])] = grid[index(x, y, z, w)];
+        width = axes[0];
+        height = axes[1];
+        length = axes[2];
+        trength = axes[3];
         grid = newGrid.copy();
     }
 

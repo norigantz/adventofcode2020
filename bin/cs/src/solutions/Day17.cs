@@ -71,23 +71,41 @@ namespace solutions {
 					
 				}
 				
+				global::Array<string> originalGrid = global::solutions.Day17.grid.copy();
+				int originalActiveCubes = global::solutions.Day17.activeCubes;
 				{
-					global::solutions.Day17.iterateCubes();
-					global::solutions.Day17.iterateCubes();
-					global::solutions.Day17.iterateCubes();
-					global::solutions.Day17.iterateCubes();
-					global::solutions.Day17.iterateCubes();
-					global::solutions.Day17.iterateCubes();
+					global::solutions.Day17.iterateCubes(3);
+					global::solutions.Day17.iterateCubes(3);
+					global::solutions.Day17.iterateCubes(3);
+					global::solutions.Day17.iterateCubes(3);
+					global::solutions.Day17.iterateCubes(3);
+					global::solutions.Day17.iterateCubes(3);
 				}
 				
 				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("a: ", global::haxe.lang.Runtime.toString(global::solutions.Day17.activeCubes))) ));
+				global::solutions.Day17.activeCubes = originalActiveCubes;
+				global::solutions.Day17.width = arr[0].Length;
+				global::solutions.Day17.height = arr.length;
+				global::solutions.Day17.length = 1;
+				global::solutions.Day17.trength = 1;
+				global::solutions.Day17.grid = originalGrid.copy();
+				{
+					global::solutions.Day17.iterateCubes(4);
+					global::solutions.Day17.iterateCubes(4);
+					global::solutions.Day17.iterateCubes(4);
+					global::solutions.Day17.iterateCubes(4);
+					global::solutions.Day17.iterateCubes(4);
+					global::solutions.Day17.iterateCubes(4);
+				}
+				
+				global::System.Console.WriteLine(((object) (global::haxe.lang.Runtime.concat("b: ", global::haxe.lang.Runtime.toString(global::solutions.Day17.activeCubes))) ));
 			}
 		}
 		
 		
-		public static void iterateCubes() {
+		public static void iterateCubes(int dimensions) {
 			unchecked {
-				global::solutions.Day17.growGrid();
+				global::solutions.Day17.growGrid(dimensions);
 				global::Array<string> newGrid = global::solutions.Day17.grid.copy();
 				int activeNeighbors = default(int);
 				{
@@ -141,35 +159,44 @@ namespace solutions {
 		}
 		
 		
-		public static void growGrid() {
+		public static void growGrid(int dimensions) {
 			unchecked {
-				int newWidth = ( global::solutions.Day17.width + 2 );
-				int newHeight = ( global::solutions.Day17.height + 2 );
-				int newLength = ( global::solutions.Day17.length + 2 );
-				int newTrength = ( global::solutions.Day17.trength + 2 );
-				global::Array<string> newGrid = new global::Array<string>();
-				newGrid.resize(( ( ( newWidth * newHeight ) * newLength ) * newTrength ));
+				global::Array<int> axes = new global::Array<int>(new int[]{global::solutions.Day17.width, global::solutions.Day17.height, global::solutions.Day17.length, global::solutions.Day17.trength});
+				global::Array<int> growShift = new global::Array<int>(new int[]{0, 0, 0, 0});
 				{
 					int _g = 0;
-					int _g1 = global::solutions.Day17.trength;
+					int _g1 = dimensions;
 					while (( _g < _g1 )) {
-						int w = _g++;
+						int i = _g++;
+						axes[i] += 2;
+						growShift[i]++;
+					}
+					
+				}
+				
+				global::Array<string> newGrid = new global::Array<string>();
+				newGrid.resize(( ( ( axes[0] * axes[1] ) * axes[2] ) * axes[3] ));
+				{
+					int _g2 = 0;
+					int _g3 = global::solutions.Day17.trength;
+					while (( _g2 < _g3 )) {
+						int w = _g2++;
 						{
-							int _g2 = 0;
-							int _g3 = global::solutions.Day17.length;
-							while (( _g2 < _g3 )) {
-								int z = _g2++;
+							int _g4 = 0;
+							int _g5 = global::solutions.Day17.length;
+							while (( _g4 < _g5 )) {
+								int z = _g4++;
 								{
-									int _g4 = 0;
-									int _g5 = global::solutions.Day17.height;
-									while (( _g4 < _g5 )) {
-										int y = _g4++;
+									int _g6 = 0;
+									int _g7 = global::solutions.Day17.height;
+									while (( _g6 < _g7 )) {
+										int y = _g6++;
 										{
-											int _g6 = 0;
-											int _g7 = global::solutions.Day17.width;
-											while (( _g6 < _g7 )) {
-												int x = _g6++;
-												newGrid[global::solutions.Day17.growIndex(( x + 1 ), ( y + 1 ), ( z + 1 ), ( w + 1 ))] = global::solutions.Day17.grid[global::solutions.Day17.index(x, y, z, w)];
+											int _g8 = 0;
+											int _g9 = global::solutions.Day17.width;
+											while (( _g8 < _g9 )) {
+												int x = _g8++;
+												newGrid[global::solutions.Day17.growIndex(( x + growShift[0] ), ( y + growShift[1] ), ( z + growShift[2] ), ( w + growShift[3] ))] = global::solutions.Day17.grid[global::solutions.Day17.index(x, y, z, w)];
 											}
 											
 										}
@@ -186,10 +213,10 @@ namespace solutions {
 					
 				}
 				
-				global::solutions.Day17.width = newWidth;
-				global::solutions.Day17.height = newHeight;
-				global::solutions.Day17.length = newLength;
-				global::solutions.Day17.trength = newTrength;
+				global::solutions.Day17.width = axes[0];
+				global::solutions.Day17.height = axes[1];
+				global::solutions.Day17.length = axes[2];
+				global::solutions.Day17.trength = axes[3];
 				global::solutions.Day17.grid = newGrid.copy();
 			}
 		}
